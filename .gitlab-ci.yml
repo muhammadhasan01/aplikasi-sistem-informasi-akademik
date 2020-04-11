@@ -16,7 +16,7 @@ pylint:
   stage: Static Analysis
   script:
   - cd src
-  - for /F "usebackq delims=" %A in (`dir /s /b *.py ^| findstr /v .py.`) do pylint -d C0301 "%A"
+  - for (/F "usebackq delims=" %A in (`dir /s /b *.py ^| findstr /v .py.`) do pylint -d C0301 "%A")
   - cd ..
 #defines the job in Test Stage
 pytest:
