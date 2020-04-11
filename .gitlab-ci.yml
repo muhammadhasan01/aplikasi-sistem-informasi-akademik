@@ -4,6 +4,7 @@
 image: "python:3.7" 
 #commands to run in the Docker container before starting each job.
 before_script:
+  - startVenv.bat
   - python --version
   - pip install -r requirements.txt
 # different stages in the pipeline
@@ -15,9 +16,7 @@ stages:
 pylint:
   stage: Static Analysis
   script:
-  - cd src
-  - for /F "usebackq delims=" %A in (`dir /s /b *.py ^| findstr /v .py.`) do pylint -d C0301 "%A"
-  - cd ..
+  - pylint -d C0301 src/*py
 #defines the job in Test Stage
 pytest:
   stage: Test
