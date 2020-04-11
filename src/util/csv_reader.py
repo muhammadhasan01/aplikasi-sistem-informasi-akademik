@@ -1,4 +1,4 @@
-import csv, json
+import csv
 
 
 def readCSV(path):

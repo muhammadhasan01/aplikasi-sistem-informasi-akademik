@@ -1,8 +1,8 @@
 import sys
 from PyQt5 import QtWidgets
 
-import etc.populate_db as populate_db
-import page.login_page as login_page
+# import etc.populate_db as populate_db
+from page.login.login_page import initLoginPage
 
 
 def init():
@@ -11,7 +11,7 @@ def init():
     app = QtWidgets.QApplication(sys.argv)
     # Create and show window
     window = QtWidgets.QMainWindow()
-    login_page.initLoginPage(window)
+    initLoginPage(window)
     window.show()
     # Exec app
     app.exec_()
