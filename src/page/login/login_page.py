@@ -4,8 +4,8 @@ from PyQt5.QtWidgets import QPushButton, QLineEdit, QLabel
 from PyQt5 import uic
 
 import resource
-from util.csv_reader import readCSV
 from page.login.forgot_password_page import initForgotPasswordPage
+from util.mysql_controller import execQuery
 
 
 def initLoginPage(window):
@@ -29,15 +29,21 @@ def initLoginPage(window):
 
 def loginButtonClicked(window):
     global _usernameInput, _passwordInput
+    username = _usernameInput.displayText()
+    password = _passwordInput.displayText()
     # Check username and password
-    userDB = readCSV("db/user.csv")
-    for id, user in userDB.items():
-        if (user["username"] == _usernameInput.displayText()
-                and user["password"] == _passwordInput.displayText()):
-            uifile = QFile(":ui/ui/next_page.ui")
-            uifile.open(QFile.ReadOnly)
-            uic.loadUi(uifile, window)
-            uifile.close()
+    if len(username) == 0 or len(password) == 0:
+        _passwordInput.setText("Username or password cannot be empty")
+        return
+    # Query database
+    query = "SELECT * FROM user WHERE username='{0}' AND password='{1}'".format(
+                    username, password)
+    user = execQuery(query)
+    if user:
+        uifile = QFile(":ui/ui/next_page.ui")
+        uifile.open(QFile.ReadOnly)
+        uic.loadUi(uifile, window)
+        uifile.close()
     # Not found
     _passwordInput.setText("Invalid username or password")
 
