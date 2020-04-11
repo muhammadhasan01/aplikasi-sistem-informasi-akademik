@@ -7,7 +7,4 @@
     <file>ui/login_page.ui</file>
     <file>ui/next_page.ui</file>
   </qresource>
-  <qresource prefix="db">
-    <file>db/user.csv</file>
-  </qresource>
 </RCC>

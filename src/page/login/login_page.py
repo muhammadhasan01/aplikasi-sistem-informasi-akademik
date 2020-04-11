@@ -30,7 +30,7 @@ def initLoginPage(window):
 def loginButtonClicked(window):
     global _usernameInput, _passwordInput
     # Check username and password
-    userDB = readCSV("../db/user.csv")
+    userDB = readCSV("db/user.csv")
     for id, user in userDB.items():
         if (user["username"] == _usernameInput.displayText()
                 and user["password"] == _passwordInput.displayText()):
