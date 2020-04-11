@@ -4,7 +4,7 @@
 image: "python:3.7" 
 #commands to run in the Docker container before starting each job.
 before_script:
-  - startVenv.bat
+  - .\"RPL virtualenv"\rpl\Scripts\activate
   - python --version
   - pip install -r requirements.txt
 # different stages in the pipeline
