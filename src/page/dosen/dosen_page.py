@@ -1,8 +1,9 @@
 from PyQt5.QtCore import QFile
-from PyQt5.QtWidgets import QWidget, QVBoxLayout, QPushButton
+from PyQt5.QtGui import QPixmap
+from PyQt5.QtWidgets import QWidget, QVBoxLayout, QPushButton, QLabel
 from PyQt5 import uic
 
-import resource
+# import resource
 # from util.mysql_controller import execQuery
 
 
@@ -23,6 +24,7 @@ def initDosenPage(window, auth):
     uic.loadUi(uifile, _navbar_D_1)
     uifile.close()
     # Get object from navbar ui
+    _logoSiak_D_2 = _navbar_D_1.findChild(QLabel, "logoSiak_D_2")
     _berandaButton_D_2 = _navbar_D_1.findChild(QPushButton, "berandaButton_D_2")
     _pengaturanButton_D_2 = _navbar_D_1.findChild(QPushButton, "pengaturanButton_D_2")
     _buatAkunMhsButton_D_2 = _navbar_D_1.findChild(QPushButton, "buatAkunMhsButton_D_2")
@@ -30,6 +32,8 @@ def initDosenPage(window, auth):
     assert _berandaButton_D_2 is not None
     assert _pengaturanButton_D_2 is not None
     assert _buatAkunMhsButton_D_2 is not None
+    # Set logo
+    _logoSiak_D_2.setPixmap(QPixmap(":img/img/logo_siak_full.png"))
 
     # Create and load content dashboard widget
     _content_D_1 = QWidget()
