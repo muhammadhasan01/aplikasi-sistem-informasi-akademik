@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="ui">
+    <file>ui/admin/headeradmin.ui</file>
+    <file>ui/admin/mainpageadmin.ui</file>
+  </qresource>
+</RCC>
