@@ -5,6 +5,7 @@ from PyQt5 import uic
 
 # import resource
 # from util.mysql_controller import execQuery
+from dosen_page import setupDashboardContent
 
 
 def initDosenPage(window, auth):
@@ -41,6 +42,8 @@ def initDosenPage(window, auth):
     uifile.open(QFile.ReadOnly)
     uic.loadUi(uifile, _content_D_1)
     uifile.close()
+    # Get object from dashboard ui
+    setupDashboardContent(_content_D_1, auth)
 
     # Set widgets to layout
     _mainVLayout_D_1.addWidget(_navbar_D_1)
@@ -49,17 +52,18 @@ def initDosenPage(window, auth):
     _content_D_1.setMinimumHeight(window.frameGeometry().height() - 200)
 
     # Set connection
-    _berandaButton_D_2.clicked.connect(lambda: berandaButtonClicked())
+    _berandaButton_D_2.clicked.connect(lambda: berandaButtonClicked(auth))
     _pengaturanButton_D_2.clicked.connect(lambda: pengaturanButtonClicked())
     _buatAkunMhsButton_D_2.clicked.connect(lambda: buatAkunMhsButtonClicked())
 
 
-def berandaButtonClicked():
+def berandaButtonClicked(auth):
     global _content_D_1
     uifile = QFile(":ui/ui/dosen_content_dashboard.ui")
     uifile.open(QFile.ReadOnly)
     uic.loadUi(uifile, _content_D_1)
     uifile.close()
+    setupDashboardContent(_content_D_1, auth)
 
 
 def pengaturanButtonClicked():

@@ -16,6 +16,65 @@
   <property name="styleSheet">
    <string notr="true">background-color: pink</string>
   </property>
+  <widget class="QScrollArea" name="scrollArea_D_3">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1920</width>
+     <height>880</height>
+    </rect>
+   </property>
+   <property name="widgetResizable">
+    <bool>true</bool>
+   </property>
+   <widget class="QWidget" name="scrollAreaContent_D_3">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>1918</width>
+      <height>878</height>
+     </rect>
+    </property>
+    <widget class="QWidget" name="verticalLayoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>70</y>
+       <width>1791</width>
+       <height>761</height>
+      </rect>
+     </property>
+     <layout class="QVBoxLayout" name="mainVLayout_D_3">
+      <item>
+       <layout class="QHBoxLayout" name="profileHLayout_D_3">
+        <item>
+         <widget class="QLabel" name="profilePicture_D_3">
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="profileDetail_D_3">
+          <property name="font">
+           <font>
+            <family>Franklin Gothic Demi Cond</family>
+            <pointsize>13</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+  </widget>
  </widget>
  <resources/>
  <connections/>
