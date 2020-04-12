@@ -56,7 +56,7 @@ def loginButtonClicked(window):
         uifile.open(QFile.ReadOnly)
         uic.loadUi(uifile, window)
         uifile.close()
-    else: # Not found
+    else:  # Not found
         _passwordInput_L_1.setText("Invalid username or password")
 
 

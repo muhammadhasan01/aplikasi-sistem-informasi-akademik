@@ -3,7 +3,6 @@ from PyQt5 import QtWidgets
 
 # import etc.populate_db as populate_db
 from page.login.login_page import initLoginPage
-from page.dosen.dosen_page import initDosenPage
 
 
 def init():
@@ -12,7 +11,7 @@ def init():
     app = QtWidgets.QApplication(sys.argv)
     # Create and show window
     window = QtWidgets.QMainWindow()
-    initDosenPage(window, None)
+    initLoginPage(window)
     window.show()
     # Exec app
     app.exec_()
