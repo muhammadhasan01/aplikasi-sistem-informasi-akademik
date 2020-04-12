@@ -2,7 +2,7 @@ import sys
 from PyQt5 import QtWidgets
 
 # import etc.populate_db as populate_db
-from page.admin.index import initLoginPage as indexAdmin
+from page.login.login_page import initLoginPage
 
 
 def init():
