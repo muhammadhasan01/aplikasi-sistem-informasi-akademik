@@ -5,11 +5,11 @@ from PyQt5 import uic
 
 # import resource
 # from util.mysql_controller import execQuery
-from dosen_page import setupDashboardContent
+from page.dosen.dosen_dashboard import setupDashboardContent
 
 
 def initDosenPage(window, auth):
-    global _navbar_D_1, _content_D_1
+    global _navbar_D_1, _content_D_1, _mainVLayout_D_1
     # Load layout ui
     uifile = QFile(":ui/ui/dosen_layout.ui")
     uifile.open(QFile.ReadOnly)
@@ -58,25 +58,43 @@ def initDosenPage(window, auth):
 
 
 def berandaButtonClicked(auth):
-    global _content_D_1
+    global _content_D_1, _mainVLayout_D_1
+    # Create new widget
+    newWidget = QWidget()
     uifile = QFile(":ui/ui/dosen_content_dashboard.ui")
     uifile.open(QFile.ReadOnly)
-    uic.loadUi(uifile, _content_D_1)
+    uic.loadUi(uifile, newWidget)
     uifile.close()
-    setupDashboardContent(_content_D_1, auth)
+    setupDashboardContent(newWidget, auth)
+    # Set up the new widget
+    _mainVLayout_D_1.removeWidget(_content_D_1)
+    _content_D_1 = newWidget
+    _mainVLayout_D_1.addWidget(_content_D_1)
 
 
 def pengaturanButtonClicked():
-    global _content_D_1
+    global _content_D_1, _mainVLayout_D_1
+    # Create new widget
+    newWidget = QWidget()
     uifile = QFile(":ui/ui/dosen_content_settings.ui")
     uifile.open(QFile.ReadOnly)
-    uic.loadUi(uifile, _content_D_1)
+    uic.loadUi(uifile, newWidget)
     uifile.close()
+    # Set up the new widget
+    _mainVLayout_D_1.removeWidget(_content_D_1)
+    _content_D_1 = newWidget
+    _mainVLayout_D_1.addWidget(_content_D_1)
 
 
 def buatAkunMhsButtonClicked():
-    global _content_D_1
+    global _content_D_1, _mainVLayout_D_1
+    # Create new widget
+    newWidget = QWidget()
     uifile = QFile(":ui/ui/dosen_content_create_std_account.ui")
     uifile.open(QFile.ReadOnly)
-    uic.loadUi(uifile, _content_D_1)
+    uic.loadUi(uifile, newWidget)
     uifile.close()
+    # Set up the new widget
+    _mainVLayout_D_1.removeWidget(_content_D_1)
+    _content_D_1 = newWidget
+    _mainVLayout_D_1.addWidget(_content_D_1)

@@ -5,6 +5,7 @@ from PyQt5 import uic
 
 import resource
 from page.login.forgot_password_page import initForgotPasswordPage
+from page.dosen.dosen_page import initDosenPage
 from util.mysql_controller import execQuery
 
 
@@ -52,10 +53,13 @@ def loginButtonClicked(window):
         print(e)
     # Cek if user found
     if user:
-        uifile = QFile(":ui/ui/next_page.ui")
-        uifile.open(QFile.ReadOnly)
-        uic.loadUi(uifile, window)
-        uifile.close()
+        if (user[0].role == "dosen"):
+            initDosenPage(window, user[0])
+        else:
+            uifile = QFile(":ui/ui/next_page.ui")
+            uifile.open(QFile.ReadOnly)
+            uic.loadUi(uifile, window)
+            uifile.close()
     else:  # Not found
         _passwordInput_L_1.setText("Invalid username or password")
 

@@ -1,17 +1,22 @@
 from PyQt5.QtGui import QPixmap
-from PyQt5.QtWidgets import QVBoxLayout, QLabel
+from PyQt5.QtWidgets import QHBoxLayout, QVBoxLayout, QLabel
+from PyQt5.QtCore import Qt
 
 
 def setupDashboardContent(content, auth):
     # Get object from dashboard ui
     _mainVLayout_D_3 = content.findChild(QVBoxLayout, "mainVLayout_D_3")
+    _profileHLayout_D_3 = content.findChild(QHBoxLayout, "profileHLayout_D_3")
     _profilePicture_D_3 = content.findChild(QLabel, "profilePicture_D_3")
     _profileDetail_D_3 = content.findChild(QLabel, "profileDetail_D_3")
     # Asserting object findChild successful
     assert _mainVLayout_D_3 is not None
+    assert _profileHLayout_D_3 is not None
     assert _profilePicture_D_3 is not None
     assert _profileDetail_D_3 is not None
 
+    # Set max profile height
+    _profileHLayout_D_3.setAlignment(Qt.AlignTop)
     # Set profile picture
     _profilePicture_D_3.setPixmap(QPixmap(":img/img/profil_default.png"))
     _profilePicture_D_3.setFixedHeight(300)
@@ -22,6 +27,5 @@ Nama    : {auth.username}
 NIP     : {auth.role}\
 """
     _profileDetail_D_3.setText(profileText)
-    _profileDetail_D_3.setFixedHeight(300)
     _profileDetail_D_3.setFixedHeight(300)
     _profileDetail_D_3.setMinimumWidth(content.frameGeometry().width() - 300)
