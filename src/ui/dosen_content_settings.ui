@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Form_D_3</class>
- <widget class="QWidget" name="Form_D_3">
+ <class>Form_D_4</class>
+ <widget class="QWidget" name="Form_D_4">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -14,7 +14,7 @@
    <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: pink</string>
+   <string notr="true">background-color: cyan</string>
   </property>
  </widget>
  <resources/>

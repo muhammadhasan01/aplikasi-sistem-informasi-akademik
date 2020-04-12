@@ -23,10 +23,67 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: blue;</string>
+    <string notr="true"/>
    </property>
    <property name="text">
     <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="buatAkunMhsButton_D_2">
+   <property name="geometry">
+    <rect>
+     <x>1680</x>
+     <y>90</y>
+     <width>191</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Franklin Gothic Medium Cond</family>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Buat Akun Mahasiswa</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pengaturanButton_D_2">
+   <property name="geometry">
+    <rect>
+     <x>1470</x>
+     <y>90</y>
+     <width>191</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Franklin Gothic Medium Cond</family>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Pengaturan</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="berandaButton_D_2">
+   <property name="geometry">
+    <rect>
+     <x>1260</x>
+     <y>90</y>
+     <width>191</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Franklin Gothic Medium Cond</family>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Beranda</string>
    </property>
   </widget>
  </widget>

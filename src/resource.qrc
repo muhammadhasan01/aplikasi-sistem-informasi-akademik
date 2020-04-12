@@ -9,5 +9,7 @@
     <file>ui/dosen_layout.ui</file>
     <file>ui/dosen_navbar.ui</file>
     <file>ui/dosen_content_dashboard.ui</file>
+    <file>ui/dosen_content_settings.ui</file>
+    <file>ui/dosen_content_create_std_account.ui</file>
   </qresource>
 </RCC>
