@@ -1,49 +1,47 @@
 from PyQt5.QtGui import QPixmap
-from PyQt5.QtWidgets import QHBoxLayout, QVBoxLayout, QLabel
+from PyQt5.QtWidgets import QWidget, QScrollArea, QHBoxLayout, QVBoxLayout, QLabel
 from PyQt5.QtCore import Qt
 
 from util.mysql_controller import execQuery
 
 
 def setupDashboardContent(content, auth, profile, teach):
+    global _mainVLayout_D_3, _profileHLayout_D_3, _profilePicture_D_3, \
+           _profileDetail_D_3, _profileDetailValue_D_3
+    # Setup the query
     profile, teach = setupQuery(auth, profile, teach)
+    # Assert that the query successful
+    assert profile is not None
+    assert teach is not None
+
     # Get object from dashboard ui
+    _scrollArea_D_3 = content.findChild(QScrollArea, "scrollArea_D_3")
     _mainVLayout_D_3 = content.findChild(QVBoxLayout, "mainVLayout_D_3")
     _profileHLayout_D_3 = content.findChild(QHBoxLayout, "profileHLayout_D_3")
     _profilePicture_D_3 = content.findChild(QLabel, "profilePicture_D_3")
     _profileDetail_D_3 = content.findChild(QLabel, "profileDetail_D_3")
     _profileDetailValue_D_3 = content.findChild(QLabel, "profileDetailValue_D_3")
     # Asserting object findChild successful
+    assert _scrollArea_D_3 is not None
     assert _mainVLayout_D_3 is not None
     assert _profileHLayout_D_3 is not None
     assert _profilePicture_D_3 is not None
     assert _profileDetail_D_3 is not None
     assert _profileDetailValue_D_3 is not None
+    # Set mainVLayout alignment
+    _mainVLayout_D_3.setAlignment(Qt.AlignTop)
+    mainScrollArea = QWidget()
+    mainScrollArea.setLayout(_mainVLayout_D_3)
+    mainScrollArea.setMaximumWidth(content.frameGeometry().width() - 300)
+    _scrollArea_D_3.setAlignment(Qt.AlignHCenter)
+    _scrollArea_D_3.setWidget(mainScrollArea)
+    _scrollArea_D_3.setWidgetResizable(True)
 
-    # Set max profile height
-    _profileHLayout_D_3.setAlignment(Qt.AlignTop)
-    # Set profile picture
-    _profilePicture_D_3.setPixmap(QPixmap(":img/img/profil_default.png"))
-    _profilePicture_D_3.setFixedHeight(300)
-    _profilePicture_D_3.setFixedWidth(300)
-    # Set profile detail
-    profileDetail = f"""\
-Nama
-NIP
-No HP
-Email"""
-    _profileDetail_D_3.setText(profileDetail)
-    _profileDetail_D_3.setFixedHeight(300)
-    _profileDetail_D_3.setMinimumWidth(200)
-    # Set profile detail value
-    profileDetailValue = f"""\
-: {profile.nama_dosen}
-: {profile.NIP}
-: {profile.no_hp}
-: {profile.email}"""
-    _profileDetailValue_D_3.setText(profileDetailValue)
-    _profileDetailValue_D_3.setFixedHeight(300)
-    _profileDetailValue_D_3.setMinimumWidth(content.frameGeometry().width() - 500)
+    # Setup profile section
+    setupProfileSection(content, profile)
+
+    # Setup teach section
+    setupTeachSection(content, teach)
 
     # Return profile and teach so it will be reusable
     return (profile, teach)
@@ -79,3 +77,58 @@ def setupQuery(auth, profile, teach):
         except Exception as e:
             print(e)
     return (profile, teach)
+
+
+def setupProfileSection(content, profile):
+    global _profileHLayout_D_3, _profilePicture_D_3, \
+           _profileDetail_D_3, _profileDetailValue_D_3
+    # Set max profile height
+    _profileHLayout_D_3.setAlignment(Qt.AlignTop)
+    # Set profile picture
+    _profilePicture_D_3.setPixmap(QPixmap(":img/img/profil_default.png"))
+    _profilePicture_D_3.setFixedHeight(300)
+    _profilePicture_D_3.setFixedWidth(300)
+    # Set profile detail
+    profileDetail = f"Nama\n" \
+                    f"NIP\n" \
+                    f"No HP\n" \
+                    f"Email"
+    _profileDetail_D_3.setText(profileDetail)
+    _profileDetail_D_3.setFixedHeight(300)
+    _profileDetail_D_3.setMinimumWidth(200)
+    # Set profile detail value
+    profileDetailValue = f": {profile.nama_dosen}\n" \
+                         f": {profile.NIP}\n" \
+                         f": {profile.no_hp}\n" \
+                         f": {profile.email}"
+    _profileDetailValue_D_3.setText(profileDetailValue)
+    _profileDetailValue_D_3.setFixedHeight(300)
+    _profileDetailValue_D_3.setMinimumWidth(content.frameGeometry().width() - 500)
+
+
+def setupTeachSection(content, teach):
+    global _mainVLayout_D_3
+    # Add table header
+    # Setup label
+    header = QLabel()
+    hBox = QHBoxLayout()
+    header.setLayout(hBox)
+    header.setFixedHeight(75)
+    header.setStyleSheet("background-color: black")
+    # Label style
+    styleHeader = "font: 13pt Franklin Gothic Demi Cond; color: white"
+    # Left
+    lHeader = QLabel()
+    lHeader.setText("Nama Mata Kuliah")
+    lHeader.setAlignment(Qt.AlignCenter)
+    lHeader.setStyleSheet(styleHeader)
+    # Right
+    rHeader = QLabel()
+    rHeader.setText("Jadwal")
+    rHeader.setAlignment(Qt.AlignCenter)
+    rHeader.setStyleSheet(styleHeader)
+    # Set in hBox
+    hBox.addWidget(lHeader)
+    hBox.addWidget(rHeader)
+    # Set in mainVLayout
+    _mainVLayout_D_3.addWidget(header)
