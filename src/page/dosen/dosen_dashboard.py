@@ -59,7 +59,7 @@ def setupQuery(auth, profile, teachList):
             profile = execQuery(query, format)[0]
         except Exception as e:
             print(e)
-    # If first time, get dosen profile
+    # If first time, get dosen teach list
     if teachList is None:
         try:
             query = """SELECT *
