@@ -5,14 +5,14 @@ from PyQt5.QtCore import Qt
 from util.mysql_controller import execQuery
 
 
-def setupDashboardContent(content, auth, profile, teach):
+def setupDashboardContent(content, auth, profile, teachList):
     global _mainVLayout_D_3, _profileHLayout_D_3, _profilePicture_D_3, \
            _profileDetail_D_3, _profileDetailValue_D_3
     # Setup the query
-    profile, teach = setupQuery(auth, profile, teach)
+    profile, teachList = setupQuery(auth, profile, teachList)
     # Assert that the query successful
     assert profile is not None
-    assert teach is not None
+    assert teachList is not None
 
     # Get object from dashboard ui
     _scrollArea_D_3 = content.findChild(QScrollArea, "scrollArea_D_3")
@@ -41,13 +41,13 @@ def setupDashboardContent(content, auth, profile, teach):
     setupProfileSection(content, profile)
 
     # Setup teach section
-    setupTeachSection(content, teach)
+    setupTeachSection(content, teachList)
 
     # Return profile and teach so it will be reusable
-    return (profile, teach)
+    return (profile, teachList)
 
 
-def setupQuery(auth, profile, teach):
+def setupQuery(auth, profile, teachList):
     # If first time, get dosen profile
     if profile is None:
         try:
@@ -60,7 +60,7 @@ def setupQuery(auth, profile, teach):
         except Exception as e:
             print(e)
     # If first time, get dosen profile
-    if teach is None:
+    if teachList is None:
         try:
             query = """SELECT *
                        FROM (
@@ -73,10 +73,10 @@ def setupQuery(auth, profile, teach):
                        )
                        WHERE mata_kuliah_diampu.nip=%s"""
             format = (profile.NIP,)
-            teach = execQuery(query, format)[0]
+            teachList = execQuery(query, format)
         except Exception as e:
             print(e)
-    return (profile, teach)
+    return (profile, teachList)
 
 
 def setupProfileSection(content, profile):
@@ -106,7 +106,7 @@ def setupProfileSection(content, profile):
     _profileDetailValue_D_3.setMinimumWidth(content.frameGeometry().width() - 500)
 
 
-def setupTeachSection(content, teach):
+def setupTeachSection(content, teachList):
     global _mainVLayout_D_3
     # Add table header
     # Setup label
@@ -132,3 +132,29 @@ def setupTeachSection(content, teach):
     hBox.addWidget(rHeader)
     # Set in mainVLayout
     _mainVLayout_D_3.addWidget(header)
+
+    # Add table row
+    # Label style
+    styleRow = "font: 13pt Franklin Gothic Demi Cond; border: 1px solid blue"
+    for teach in teachList:
+        # Setup label
+        row = QLabel()
+        hBox = QHBoxLayout()
+        row.setLayout(hBox)
+        row.setFixedHeight(75)
+        row.setStyleSheet("border: 2px solid black")
+        # Left
+        lRow = QLabel()
+        lRow.setText(teach.nama_matkul)
+        lRow.setAlignment(Qt.AlignCenter)
+        lRow.setStyleSheet(styleRow)
+        # Right
+        rRow = QLabel()
+        rRow.setText(str(teach.waktu_mulai) + " - " + str(teach.waktu_selesai))
+        rRow.setAlignment(Qt.AlignCenter)
+        rRow.setStyleSheet(styleRow)
+        # Set in hBox
+        hBox.addWidget(lRow)
+        hBox.addWidget(rRow)
+        # Set in mainVLayout
+        _mainVLayout_D_3.addWidget(row)

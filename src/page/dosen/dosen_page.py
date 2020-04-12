@@ -9,7 +9,7 @@ from page.dosen.dosen_dashboard import setupDashboardContent
 
 _auth = None
 _dosenProfile = None
-_dosenTeach = None
+_dosenTeachList = None
 
 
 def initDosenPage(window, auth):
@@ -64,14 +64,15 @@ def initDosenPage(window, auth):
 
 
 def berandaButtonClicked():
-    global _content_D_1, _mainVLayout_D_1, _auth, _dosenProfile, _dosenTeach
+    global _content_D_1, _mainVLayout_D_1, _auth, _dosenProfile, _dosenTeachList
     # Create new widget
     newWidget = QWidget()
     uifile = QFile(":ui/ui/dosen_content_dashboard.ui")
     uifile.open(QFile.ReadOnly)
     uic.loadUi(uifile, newWidget)
     uifile.close()
-    _dosenProfile, _dosenTeach = setupDashboardContent(newWidget, _auth, _dosenProfile, _dosenTeach)
+    _dosenProfile, _dosenTeachList = \
+        setupDashboardContent(newWidget, _auth, _dosenProfile, _dosenTeachList)
     # Set up the new widget
     _mainVLayout_D_1.removeWidget(_content_D_1)
     _content_D_1 = newWidget
