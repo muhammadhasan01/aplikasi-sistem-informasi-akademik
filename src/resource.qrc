@@ -6,7 +6,7 @@
     <file>ui/forgot_password_page.ui</file>
     <file>ui/login_page.ui</file>
     <file>ui/next_page.ui</file>
-    <file>ui/admin/headeradmin.ui</file>
+    <file>ui/admin/admin_navbar.ui</file>
     <file>ui/admin/mainpageadmin.ui</file>
   </qresource>
 </RCC>
