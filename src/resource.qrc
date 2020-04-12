@@ -14,6 +14,11 @@
     <file>ui/dosen_content_dashboard.ui</file>
     <file>ui/dosen_content_settings.ui</file>
     <file>ui/dosen_content_create_std_account.ui</file>
+    <file>ui/mahasiswa_layout.ui</file>
+    <file>ui/mahasiswa_navbar.ui</file>
+    <file>ui/mahasiswa_content_dashboard.ui</file>
+    <file>ui/mahasiswa_content_settings.ui</file>
+    <file>ui/mahasiswa_content_matkul.ui</file>
     <file>ui/next_page.ui</file>
   </qresource>
 </RCC>
