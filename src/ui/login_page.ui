@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow">
+ <class>MainWindow_L_1</class>
+ <widget class="QMainWindow" name="MainWindow_L_1">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -13,8 +13,8 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
-  <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="loginButton">
+  <widget class="QWidget" name="centralwidget_L_1">
+   <widget class="QPushButton" name="loginButton_L_1">
     <property name="geometry">
      <rect>
       <x>1250</x>
@@ -36,7 +36,7 @@
      <string>Login</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="usernameInput">
+   <widget class="QLineEdit" name="usernameInput_L_1">
     <property name="geometry">
      <rect>
       <x>1250</x>
@@ -54,7 +54,7 @@
      <string>Username</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="passwordInput">
+   <widget class="QLineEdit" name="passwordInput_L_1">
     <property name="geometry">
      <rect>
       <x>1250</x>
@@ -72,7 +72,7 @@
      <string>Password</string>
     </property>
    </widget>
-   <widget class="QLabel" name="loginBgLabel">
+   <widget class="QLabel" name="loginBgLabel_L_1">
     <property name="geometry">
      <rect>
       <x>0</x>
@@ -88,7 +88,7 @@
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QPushButton" name="forgotPasswordButton">
+   <widget class="QPushButton" name="forgotPasswordButton_L_1">
     <property name="geometry">
      <rect>
       <x>1520</x>
@@ -107,7 +107,7 @@
      <string>Forgot Password</string>
     </property>
    </widget>
-   <widget class="QLabel" name="signInLabel">
+   <widget class="QLabel" name="signInLabel_L_1">
     <property name="geometry">
      <rect>
       <x>1250</x>
@@ -129,14 +129,14 @@
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <zorder>loginBgLabel</zorder>
-   <zorder>loginButton</zorder>
-   <zorder>usernameInput</zorder>
-   <zorder>passwordInput</zorder>
-   <zorder>forgotPasswordButton</zorder>
-   <zorder>signInLabel</zorder>
+   <zorder>loginBgLabel_L_1</zorder>
+   <zorder>loginButton_L_1</zorder>
+   <zorder>usernameInput_L_1</zorder>
+   <zorder>passwordInput_L_1</zorder>
+   <zorder>forgotPasswordButton_L_1</zorder>
+   <zorder>signInLabel_L_1</zorder>
   </widget>
-  <widget class="QMenuBar" name="menubar">
+  <widget class="QMenuBar" name="menubar_L_1">
    <property name="geometry">
     <rect>
      <x>0</x>
@@ -149,7 +149,7 @@
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources>
-  <include location="../src/resource.qrc"/>
+  <include location="../resource.qrc"/>
  </resources>
  <connections/>
 </ui>

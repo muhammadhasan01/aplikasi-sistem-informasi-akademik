@@ -9,43 +9,55 @@ from util.mysql_controller import execQuery
 
 
 def initLoginPage(window):
-    global _usernameInput, _passwordInput, _loginButton, _forgotPasswordButton
+    global _usernameInput_L_1, _passwordInput_L_1, _loginButton_L_1, _forgotPasswordButton_L_1
     # Load ui
     uifile = QFile(":ui/ui/login_page.ui")
     uifile.open(QFile.ReadOnly)
     uic.loadUi(uifile, window)
     uifile.close()
     # Get object from ui
-    _loginBgLabel = window.findChild(QLabel, "loginBgLabel")
-    _loginBgLabel.setPixmap(QPixmap(":img/img/login_page_bg.jpg"))
-    _usernameInput = window.findChild(QLineEdit, "usernameInput")
-    _passwordInput = window.findChild(QLineEdit, "passwordInput")
-    _loginButton = window.findChild(QPushButton, "loginButton")
-    _forgotPasswordButton = window.findChild(QPushButton, "forgotPasswordButton")
+    _loginBgLabel_L_1 = window.findChild(QLabel, "loginBgLabel_L_1")
+    _usernameInput_L_1 = window.findChild(QLineEdit, "usernameInput_L_1")
+    _passwordInput_L_1 = window.findChild(QLineEdit, "passwordInput_L_1")
+    _loginButton_L_1 = window.findChild(QPushButton, "loginButton_L_1")
+    _forgotPasswordButton_L_1 = window.findChild(QPushButton, "forgotPasswordButton_L_1")
+    # Asserting object findChild successful
+    assert _loginBgLabel_L_1 is not None
+    assert _usernameInput_L_1 is not None
+    assert _passwordInput_L_1 is not None
+    assert _loginButton_L_1 is not None
+    assert _forgotPasswordButton_L_1 is not None
+    # Set background
+    _loginBgLabel_L_1.setPixmap(QPixmap(":img/img/login_page_bg.jpg"))
     # Set connection
-    _loginButton.clicked.connect(lambda: loginButtonClicked(window))
-    _forgotPasswordButton.clicked.connect(lambda: forgotPasswordButtonClicked(window))
+    _loginButton_L_1.clicked.connect(lambda: loginButtonClicked(window))
+    _forgotPasswordButton_L_1.clicked.connect(lambda: forgotPasswordButtonClicked(window))
 
 
 def loginButtonClicked(window):
-    global _usernameInput, _passwordInput
-    username = _usernameInput.displayText()
-    password = _passwordInput.displayText()
+    global _usernameInput_L_1, _passwordInput_L_1
+    username = _usernameInput_L_1.displayText()
+    password = _passwordInput_L_1.displayText()
     # Check username and password
     if len(username) == 0 or len(password) == 0:
-        _passwordInput.setText("Username or password cannot be empty")
+        _passwordInput_L_1.setText("Username or password cannot be empty")
         return
     # Query database
-    query = "SELECT * FROM user WHERE username='{0}' AND password='{1}'".format(
-                    username, password)
-    user = execQuery(query)
+    query = "SELECT * FROM user WHERE username=%s AND password=%s"
+    format = (username, password,)
+    user = None
+    try:
+        user = execQuery(query, format)
+    except Exception as e:
+        print(e)
+    # Cek if user found
     if user:
         uifile = QFile(":ui/ui/next_page.ui")
         uifile.open(QFile.ReadOnly)
         uic.loadUi(uifile, window)
         uifile.close()
-    # Not found
-    _passwordInput.setText("Invalid username or password")
+    else: # Not found
+        _passwordInput_L_1.setText("Invalid username or password")
 
 
 def forgotPasswordButtonClicked(window):
