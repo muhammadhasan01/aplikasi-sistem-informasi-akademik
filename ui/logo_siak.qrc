@@ -1,0 +1,11 @@
+<RCC>
+  <qresource prefix="Logo">
+    <file>../img/logo_siak.png</file>
+  </qresource>
+  <qresource prefix="SubNama">
+    <file>../img/Sistem Informasi Akademik.png</file>
+  </qresource>
+  <qresource prefix="Nama">
+    <file>../img/SIAK.png</file>
+  </qresource>
+</RCC>
