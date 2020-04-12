@@ -9,9 +9,9 @@ _mydb = mysql.connector.connect(
 )
 
 
-def execQuery(query):
+def execQuery(query, format=None):
     mycursor = _mydb.cursor(named_tuple=True)
-    mycursor.execute(query)
+    mycursor.execute(query, format)
     myresult = mycursor.fetchall()
     return myresult
 

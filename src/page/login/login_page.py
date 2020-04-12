@@ -36,9 +36,12 @@ def loginButtonClicked(window):
         _passwordInput.setText("Username or password cannot be empty")
         return
     # Query database
-    query = "SELECT * FROM user WHERE username='{0}' AND password='{1}'".format(
-                    username, password)
-    user = execQuery(query)
+    query = "SELECT * FROM user WHERE username=%s AND password=%s"
+    format = (username, password)
+    try:
+        user = execQuery(query, format)
+    except Exception as e:
+        print(e)
     if user:
         uifile = QFile(":ui/ui/next_page.ui")
         uifile.open(QFile.ReadOnly)
