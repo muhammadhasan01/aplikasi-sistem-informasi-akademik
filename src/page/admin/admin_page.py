@@ -49,7 +49,8 @@ def initAdminPage(window, auth):
   _matkulButton_A.clicked.connect(lambda: matkulButtonClicked())
 
 def berandaButtonClicked():
-  global _content_A, _mainVLayout_A
+  global _content_A, _mainVLayout_A, _navbar_A
+  print(_content_A)
   newWidget = QWidget()
   uifile = QFile(":ui/ui/admin/admin_content_dashboard.ui")
   uifile.open(QFile.ReadOnly)
@@ -60,7 +61,7 @@ def berandaButtonClicked():
   _mainVLayout_A.addWidget(_content_A)
 
 def userButtonClicked():
-  global _content_A, mainVLayout_A
+  global _content_A, mainVLayout_A, _navbar_A
   newWidget = QWidget()
   uifile = QFile(":ui/ui/admin/admin_content_user.ui")
   uifile.open(QFile.ReadOnly)
@@ -71,7 +72,7 @@ def userButtonClicked():
   _mainVLayout_A.addWidget(_content_A)
 
 def matkulButtonClicked():
-  global _content_A, mainVLayout_A
+  global _content_A, mainVLayout_A, _navbar_A
   newWidget = QWidget()
   uifile = QFile(":ui/ui/admin/admin_content_matkul.ui")
   uifile.open(QFile.ReadOnly)
