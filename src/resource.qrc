@@ -1,12 +1,18 @@
 <RCC>
   <qresource prefix="img">
     <file>img/login_page_bg.jpg</file>
+    <file>img/logo_siak_full.png</file>
   </qresource>
   <qresource prefix="ui">
     <file>ui/forgot_password_page.ui</file>
     <file>ui/login_page.ui</file>
-    <file>ui/next_page.ui</file>
     <file>ui/admin/headeradmin.ui</file>
     <file>ui/admin/mainpageadmin.ui</file>
+    <file>ui/dosen_layout.ui</file>
+    <file>ui/dosen_navbar.ui</file>
+    <file>ui/dosen_content_dashboard.ui</file>
+    <file>ui/dosen_content_settings.ui</file>
+    <file>ui/dosen_content_create_std_account.ui</file>
+    <file>ui/next_page.ui</file>
   </qresource>
 </RCC>
