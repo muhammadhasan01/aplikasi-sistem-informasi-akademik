@@ -17,7 +17,11 @@ def initAdminPage(window, auth):
   _mainVLayout_A = window.findChild(QVBoxLayout, "mainVLayout_A")
 
   #load navbar widget
-  _navbar_A = getNavBarAdmin()
+  _navbar_A = QWidget()
+  uifile = QFile(":ui/ui/admin/admin_navbar.ui")
+  uifile.open(QFile.ReadOnly)
+  uic.loadUi(uifile, _navbar_A)
+  uifile.close()
   
   #load content
   _content_A = QWidget()
