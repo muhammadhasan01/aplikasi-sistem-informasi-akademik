@@ -7,8 +7,8 @@ import resource
 from page.admin.admin_navbar import getNavBarAdmin
 
 
-def initAdminPage(window, adminName):
-  global _navbar_A, _content_A_1
+def initAdminPage(window, auth):
+  global _navbar_A, _content_A, _mainVLayout_A
   # Load ui
   uifile = QFile(":ui/ui/admin/admin_layout.ui")
   uifile.open(QFile.ReadOnly)
@@ -21,65 +21,65 @@ def initAdminPage(window, adminName):
   _navbar_A = getNavBarAdmin()
   
   #load content
-  _content_A_1 = QWidget()
+  _content_A = QWidget()
   uifile = QFile(":ui/ui/admin/admin_content_dashboard.ui")
   uifile.open(QFile.ReadOnly)
-  uic.loadUi(uifile, _content_A_1)
+  uic.loadUi(uifile, _content_A)
   uifile.close()
 
-  #set admin name and image to default
-  _adminName_A_1 = _content_A_1.findChild(QLabel, "adminName")
-  _adminImage_A_1 = _content_A_1.findChild(QLabel, "adminImage")
-  _adminName_A_1.setText(adminName)
+  #set admin name to auth and image to default
+  _adminName_A_1 = _content_A.findChild(QLabel, "adminName")
+  _adminImage_A_1 = _content_A.findChild(QLabel, "adminImage")
+  _adminName_A_1.setText(auth)
   pixmap = QPixmap(":img/img/profil_default.png")
-  pixmap = pixmap.scaledToHeight(200)
+  pixmap = pixmap.scaledToHeight(300)
   _adminImage_A_1.setPixmap(pixmap)
 
   #Load widgets to layout
   _mainVLayout_A.addWidget(_navbar_A)
-  _mainVLayout_A.addWidget(_content_A_1)
+  _mainVLayout_A.addWidget(_content_A)
   _navbar_A.setFixedHeight(200)
 
+  #set up buttons
+  _berandaButton_A = _navbar_A.findChild(QPushButton, "berandaButton")
+  _userButton_A = _navbar_A.findChild(QPushButton, "userButton")
+  _matkulButton_A = _navbar_A.findChild(QPushButton, "matkulButton")
+  _berandaButton_A.clicked.connect(lambda: berandaButtonClicked())
+  _userButton_A.clicked.connect(lambda: userButtonClicked())
+  _matkulButton_A.clicked.connect(lambda: matkulButtonClicked())
 
-  # # # Load layout ui
-  # # uifile = QFile(":ui/ui/dosen_layout.ui")
-  # # uifile.open(QFile.ReadOnly)
-  # # uic.loadUi(uifile, window)
-  # # uifile.close()
-  # # # Get object from layout ui
-  # # _mainVLayout_D_1 = window.findChild(QVBoxLayout, "mainVLayout_D_1")
+def berandaButtonClicked():
+  global _content_A, _mainVLayout_A
+  newWidget = QWidget()
+  uifile = QFile(":ui/ui/admin/admin_content_dashboard.ui")
+  uifile.open(QFile.ReadOnly)
+  uic.loadUi(uifile, newWidget)
+  uifile.close()
+  _mainVLayout_A.removeWidget(_content_A)
+  _content_A = newWidget
+  _mainVLayout_A.addWidget(_content_A)
 
-  # # # Create and load navbar widget
-  # # _navbar_D_1 = QWidget()
-  # # uifile = QFile(":ui/ui/dosen_navbar.ui")
-  # # uifile.open(QFile.ReadOnly)
-  # # uic.loadUi(uifile, _navbar_D_1)
-  # # uifile.close()
-  # # # Get object from navbar ui
-  # # _logoSiak_D_2 = _navbar_D_1.findChild(QLabel, "logoSiak_D_2")
-  # # _berandaButton_D_2 = _navbar_D_1.findChild(QPushButton, "berandaButton_D_2")
-  # # _pengaturanButton_D_2 = _navbar_D_1.findChild(QPushButton, "pengaturanButton_D_2")
-  # # _buatAkunMhsButton_D_2 = _navbar_D_1.findChild(QPushButton, "buatAkunMhsButton_D_2")
-  # # Asserting object findChild successful
-  # # assert _berandaButton_D_2 is not None
-  # # assert _pengaturanButton_D_2 is not None
-  # # assert _buatAkunMhsButton_D_2 is not None
-  # # Set logo
-  # # _logoSiak_D_2.setPixmap(QPixmap(":img/img/logo_siak_full.png"))
+def userButtonClicked():
+  global _content_A, mainVLayout_A
+  newWidget = QWidget()
+  uifile = QFile(":ui/ui/admin/admin_content_user.ui")
+  uifile.open(QFile.ReadOnly)
+  uic.loadUi(uifile, newWidget)
+  uifile.close()
+  _mainVLayout_A.removeWidget(_content_A)
+  _content_A = newWidget
+  _mainVLayout_A.addWidget(_content_A)
 
-  # # Create and load content dashboard widget
-  # # Set widgets to layout
-  # _mainVLayout_D_1.addWidget(_navbar_D_1)
-  # _mainVLayout_D_1.addWidget(_content_D_1)
-  # _navbar_D_1.setFixedHeight(200)
-  # _content_D_1.setMinimumHeight(window.frameGeometry().height() - 200)
-
-  # # Set connection
-  # _berandaButton_D_2.clicked.connect(lambda: berandaButtonClicked())
-  # _pengaturanButton_D_2.clicked.connect(lambda: pengaturanButtonClicked())
-  # _buatAkunMhsButton_D_2.clicked.connect(lambda: buatAkunMhsButtonClicked())
-# from PyQt5.QtWidgets import QPushButton, QLineEdit, QLabel
-# from PyQt5 import uic
+def matkulButtonClicked():
+  global _content_A, mainVLayout_A
+  newWidget = QWidget()
+  uifile = QFile(":ui/ui/admin/admin_content_matkul.ui")
+  uifile.open(QFile.ReadOnly)
+  uic.loadUi(uifile, newWidget)
+  uifile.close()
+  _mainVLayout_A.removeWidget(_content_A)
+  _content_A = newWidget
+  _mainVLayout_A.addWidget(_content_A)
 
 # import resource
 # from page.login.forgot_password_page import initForgotPasswordPage

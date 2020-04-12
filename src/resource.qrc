@@ -9,6 +9,8 @@
     <file>ui/next_page.ui</file>
     <file>ui/admin/admin_navbar.ui</file>
     <file>ui/admin/admin_content_dashboard.ui</file>
+    <file>ui/admin/admin_content_user.ui</file>
+    <file>ui/admin/admin_content_matkul.ui</file>
     <file>ui/admin/admin_layout.ui</file>
   </qresource>
 </RCC>
