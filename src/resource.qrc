@@ -1,0 +1,14 @@
+<RCC>
+  <qresource prefix="img">
+    <file>img/login_page_bg.jpg</file>
+    <file>img/logo_siak_full.png</file>
+    <file>img/profil_default.png</file>
+  </qresource>
+  <qresource prefix="ui">
+    <file>ui/mahasiswa_layout.ui</file>
+    <file>ui/mahasiswa_navbar.ui</file>
+    <file>ui/mahasiswa_content_dashboard.ui</file>
+    <file>ui/mahasiswa_content_settings.ui</file>
+    <file>ui/mahasiswa_content_matakul.ui</file>
+  </qresource>
+</RCC>
