@@ -49,6 +49,9 @@
      <layout class="QVBoxLayout" name="mainVLayout_D_3">
       <item>
        <layout class="QHBoxLayout" name="profileHLayout_D_3">
+        <property name="spacing">
+         <number>25</number>
+        </property>
         <item>
          <widget class="QLabel" name="profilePicture_D_3">
           <property name="text">
@@ -69,6 +72,19 @@
           </property>
           <property name="text">
            <string/>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="profileDetailValue_D_3">
+          <property name="font">
+           <font>
+            <family>Franklin Gothic Demi Cond</family>
+            <pointsize>13</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>TextLabel</string>
           </property>
          </widget>
         </item>

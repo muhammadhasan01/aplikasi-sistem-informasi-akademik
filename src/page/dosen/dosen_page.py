@@ -3,13 +3,19 @@ from PyQt5.QtGui import QPixmap
 from PyQt5.QtWidgets import QWidget, QVBoxLayout, QPushButton, QLabel
 from PyQt5 import uic
 
-# import resource
-# from util.mysql_controller import execQuery
+import resource
 from page.dosen.dosen_dashboard import setupDashboardContent
 
 
+_auth = None
+_dosenProfile = None
+_dosenTeach = None
+
+
 def initDosenPage(window, auth):
-    global _navbar_D_1, _content_D_1, _mainVLayout_D_1
+    global _navbar_D_1, _content_D_1, _mainVLayout_D_1, _auth
+    # Save authentication profile
+    _auth = auth
     # Load layout ui
     uifile = QFile(":ui/ui/dosen_layout.ui")
     uifile.open(QFile.ReadOnly)
@@ -42,8 +48,8 @@ def initDosenPage(window, auth):
     uifile.open(QFile.ReadOnly)
     uic.loadUi(uifile, _content_D_1)
     uifile.close()
-    # Get object from dashboard ui
-    setupDashboardContent(_content_D_1, auth)
+    # Simulate berandaButtonClicked
+    berandaButtonClicked()
 
     # Set widgets to layout
     _mainVLayout_D_1.addWidget(_navbar_D_1)
@@ -52,20 +58,20 @@ def initDosenPage(window, auth):
     _content_D_1.setMinimumHeight(window.frameGeometry().height() - 200)
 
     # Set connection
-    _berandaButton_D_2.clicked.connect(lambda: berandaButtonClicked(auth))
+    _berandaButton_D_2.clicked.connect(lambda: berandaButtonClicked())
     _pengaturanButton_D_2.clicked.connect(lambda: pengaturanButtonClicked())
     _buatAkunMhsButton_D_2.clicked.connect(lambda: buatAkunMhsButtonClicked())
 
 
-def berandaButtonClicked(auth):
-    global _content_D_1, _mainVLayout_D_1
+def berandaButtonClicked():
+    global _content_D_1, _mainVLayout_D_1, _auth, _dosenProfile, _dosenTeach
     # Create new widget
     newWidget = QWidget()
     uifile = QFile(":ui/ui/dosen_content_dashboard.ui")
     uifile.open(QFile.ReadOnly)
     uic.loadUi(uifile, newWidget)
     uifile.close()
-    setupDashboardContent(newWidget, auth)
+    _dosenProfile, _dosenTeach = setupDashboardContent(newWidget, _auth, _dosenProfile, _dosenTeach)
     # Set up the new widget
     _mainVLayout_D_1.removeWidget(_content_D_1)
     _content_D_1 = newWidget
