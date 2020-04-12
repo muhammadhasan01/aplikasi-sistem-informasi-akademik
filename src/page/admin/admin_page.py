@@ -87,92 +87,101 @@ def matkulButtonClicked():
 # from util.mysql_controller import execQuery
 
 #def initAdminPage(window):
+    #global _homeButton_A_30, _userButton_A_30, _matkulButton_A_30, _sort_user_byButton_A_30, _add_userButton_A_30, _update_userButton_A_30, _remove_userButton_A_30, _sort_matkul_byButton_A_31, _add_matkulButton_A_31, _update_matkulButton_A_31, _remove_matkulButton_A_31
+    #Load ui
+    #uifile = QFile("") #add filename
+    #uifile.open(QFile.ReadOnly)
+    #uic.loadUi(uifile, window)
+    #uifile.close()
+    #Get object from ui
+    #_homeButton_A_30 = window.findChild(QPushButton, "homeButton_A_30")
+    #_userButton_A_30 = window.findChild(QPushButton, "userButton_A_30")
+    #_matkulButton_A_30 = window.findChild(QPushButton, "matkulButton_A_30")
+    #_sort_user_byButton_A_30 = window.findChild(QPushButton, "sort_user_byButton_A_30")
+    #_add_userButton_A_30 = window.findChild(QPushButton, "add_userButton_A_30")
+    #_update_userButton_A_30 = window.findChild(QPushButton, "update_userButton_A_30")
+    #_remove_userButton_A_30 = window.findChild(QPushButton, "remove_userButton_A_30")
+    #_sort_matkul_byButton_A_31 = window.findChild(QPushButton, "sort_matkul_byButton_A_31")
+    #_add_matkulButton_A_31 = window.findChild(QPushButton, "add_matkulButton_A_31")
+    #_update_matkulButton_A_31 = window.findChild(QPushButton, "update_matkulButton_A_31")
+    #_remove_matkulButton_A_31 = window.findChild(QPushButton, "remove_matkulButton_A_31")
+    # Asserting object findChild successful
+    #assert _homeButton_A_30 is not None
+    #assert _userButton_A_30 is not None
+    #assert _matkulButton_A_30 is not None
+    #assert _sort_user_byButton_A_30 is not None
+    #assert _add_userButton_A_30 is not None
+    #assert _update_userButton_A_30 is not None
+    #assert _remove_userButton_A_30 is not None
+    #assert _sort_matkul_byButton_A_31 is not None
+    #assert _add_matkulButton_A_31 is not None
+    #assert _update_matkulButton_A_31 is not None
+    #assert _remove_matkulButton_A_31 is not None
 
-#toHomePage()
+    # Set background
+    # Set connection
+
+#def berandaButtonClicked():
 #   homeButton_A_30
 #       change address to home page
 #       does nothing if already in home page
-#
-#def homeButton_A_30():
 
-#toUserPage()
+#def userButtonClicked():
 #   userButton_A_30
 #       get data from user_table
 #       display as user_list
-#
-#def userButton_A_30():
 
-#toMatkulPage
+#def matkulButtonClicked():
 #   matkulButton_A_30
 #       get data from matkul_table
 #       display as matkul_list
-#
-#def matkulButton_A_30():
 
-#sortUserBy(string)
+#def sortUserBy(string):
 #   sort_user_byButton_A_30
 #       sort user_table as per preset string conditions
 #       display as user_list
-#
-#def sort_user_byButton_A_30():
 
-#addUser()
+#def addUserButtonClicked():
 #   add_userButton_A_30
 #       adds user to user_table
 #       display as user_list
-#
-#def add_userButton_A_30():
 
-#updateUser()
+#def updateUserButtonClicked():
 #   update_userButton_A_30
 #       change user data in user_table
 #       display as user_list
 #   #repeated across all tuples
-#
-#def update_userButton_A_30():
 
-#removeUser()
+#def removeUserButtonClicked():
 #   remove_UserButton_A_30
 #       remove user tuple from user_table
 #       display as user_list
 #   #repeated across all tuples
-#
-#def remove_userButton_A_30():
 
-#sortMatkulBy(string)
+#def sortMatkulByButtonClicked(string):
 #   sort_matkul_byButton_A_31
 #       sort matkul_table as per preset string conditions
 #       display as matkul_list
-#
-#def sort_matkul_byButton_A_31():
 
-#addMatkul()
+#def addMatkulButtonClicked():
 #   add_matkulButton_A_31
 #       add matkul to matkul_table
 #       display as matkul_list
-#
-#def add_matkulButton_A_31():
 
-#updateMatkul()
+#def updateMatkulButtonClicked():
 #   update_matkul_A_31
 #       change a matkul data in matkul_table
 #       display as matkul_list
 #   #repeated across all tuples
-#
-#def update_matkul_A_31():
 
-#removeMatkul()
+#def removeMatkulButtonClicked():
 #   remove_matkul_A_31
 #       remove matkul tuple from matkul_table
 #       display as matkul_list
 #   #repeated across all tuples
-#
-#def remove_matkul_A_31():
 
-#display user_list
+#def display_user_list(window):
 #
-#def display_user_list():
 
-#display matkul_list
+#def display_matkul_list(window):
 #
-#def display_matkul_list():
