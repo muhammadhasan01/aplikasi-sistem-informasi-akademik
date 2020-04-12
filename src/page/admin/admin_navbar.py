@@ -12,22 +12,25 @@ def getNavBarAdmin():
     uifile.open(QFile.ReadOnly)
     uic.loadUi(uifile, _navbar_A)
     uifile.close()
-    # Get object from ui
-    _berandaButton_A = _navbar_A.findChild(QPushButton, "berandaButton")
-    _userButton_A = _navbar_A.findChild(QPushButton, "userButton")
-    _matkulButton_A = _navbar_A.findChild(QPushButton, "matkulButton")
-    # Set connection
-    _berandaButton_A.clicked.connect(lambda: berandaButtonClicked(window))
-    _userButton_A.clicked.connect(lambda: userButtonClicked(window))
-    _matkulButton_A.clicked.connect(lambda: matkulButtonClicked(window))
-    
     return _navbar_A
 
 def berandaButtonClicked(window):
-    uifile = QFile(":ui/ui/admin/mainpageadmin.ui")
+    uifile = QFile(":ui/ui/admin/admin_content_dashboard.ui")
     uifile.open(QFile.ReadOnly)
     uic.loadUi(uifile, window)
     uifile.close()
+    global _content_D_1, _mainVLayout_D_1
+    # Create new widget
+    # newWidget = QWidget()
+    # uifile = QFile(":ui/ui/dosen_content_dashboard.ui")
+    # uifile.open(QFile.ReadOnly)
+    # uic.loadUi(uifile, newWidget)
+    # uifile.close()
+    # setupDashboardContent(newWidget, auth)
+    # # Set up the new widget
+    # _mainVLayout_D_1.removeWidget(_content_D_1)
+    # _content_D_1 = newWidget
+    # _mainVLayout_D_1.addWidget(_content_D_1)
 
 def userButtonClicked(window):
   pass
