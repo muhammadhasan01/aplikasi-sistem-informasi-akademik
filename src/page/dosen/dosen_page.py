@@ -5,6 +5,7 @@ from PyQt5 import uic
 
 import resource
 from page.dosen.dosen_dashboard import setupDashboardContent
+from page.dosen.dosen_settings import setupSettingsContent, submitButtonClicked
 
 
 _auth = None
@@ -80,17 +81,27 @@ def berandaButtonClicked():
 
 
 def pengaturanButtonClicked():
-    global _content_D_1, _mainVLayout_D_1
+    global _content_D_1, _mainVLayout_D_1, _auth, _dosenProfile
     # Create new widget
     newWidget = QWidget()
     uifile = QFile(":ui/ui/dosen_content_settings.ui")
     uifile.open(QFile.ReadOnly)
     uic.loadUi(uifile, newWidget)
     uifile.close()
+    _dosenProfile = setupSettingsContent(newWidget, _auth, _dosenProfile)
     # Set up the new widget
     _mainVLayout_D_1.removeWidget(_content_D_1)
     _content_D_1 = newWidget
     _mainVLayout_D_1.addWidget(_content_D_1)
+    # Get submit button and set connection
+    _submitButton_D_4 = _content_D_1.findChild(QPushButton, "submitButton_D_4")
+    assert _submitButton_D_4 is not None
+    _submitButton_D_4.clicked.connect(lambda: updateDosenProfile())
+
+
+def updateDosenProfile():
+    global _dosenProfile
+    _dosenProfile = submitButtonClicked(_dosenProfile)
 
 
 def buatAkunMhsButtonClicked():
