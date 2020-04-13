@@ -4,13 +4,13 @@
 
 ![SistemInformasiAkademik](img/logo_siak.png) ![SIAK](img/SIAK.png)
 
-Perangkat lunak yang kami kembangkan adalah **Aplikasi Sistem Informasi Akademik**. Aplikasi Sistem Informasi Akademik ini dikembangkan untuk memenuhi kebutuhan dalam kegiatan
+Perangkat lunak yang kami kembangkan adalah **Aplikasi Sistem Informasi Akademik (SIAK)**. Aplikasi Sistem Informasi Akademik (SIAK) ini dikembangkan untuk memenuhi kebutuhan dalam kegiatan
 administrasi akademik di kampus STEI (Sekolah Teknik Elektro dan Informatika). Sistem
 Informasi Akademik ini dikelola oleh admin dan dapat digunakan oleh mahasiswa dan dosen.
 
-Perangkat lunak tersebut dibuat oleh **Kelompok 02 - _Skuy Living Empire_ - K03**:
+Aplikasi Sistem Informasi Akademik (SIAK) tersebut dibuat oleh **Kelompok 02 - _Skuy Living Empire_ - K03**:
 
-| Nama | NIM |
+| **Nama** | **NIM** |
 | ------ | ------ |
 | Muhammad Hasan | 13518012 |
 | Muhammad Ravid Valiandi | 13518099 | 
@@ -26,7 +26,7 @@ Penanggung Jawab : Naufal Dean Anugrah / 13518123
 
 Modul Login ini berfungsi sebagai modul untuk melakukan verifikasi login user <!-- Silahkan hapus/tambah/edit deskripsi jika diperlukan -->
 
-<!-- Capture Tampilan Layar (jika ada) -->
+<!-- Isi Capture Tampilan Layar (jika ada) -->
 
 ### Modul Admin
 
@@ -34,7 +34,7 @@ Penanggung Jawab : Muhammad Ravid Valiandi / 13518099 dan Mario Gunawan / 135181
 
 Modul Admin ini berfungsi sebagai modul untuk melayani permintaan Admin <!-- Silahkan hapus/tambah/edit deskripsi jika diperlukan -->
 
-<!-- Capture Tampilan Layar (jika ada) -->
+<!-- Isi Capture Tampilan Layar (jika ada) -->
 
 ### Modul Dosen
 
@@ -42,7 +42,7 @@ Penanggung Jawab : Yan Arie Motinggo / 13518129
 
 Modul Desen ini berfungsi sebagai modul untuk melayani permintaan Dosen <!-- Silahkan hapus/tambah/edit deskripsi jika diperlukan -->
 
-<!-- Capture Tampilan Layar (jika ada) -->
+<!-- Isi Capture Tampilan Layar (jika ada) -->
 
 ### Modul Mahasiswa
 
@@ -50,11 +50,11 @@ Penanggung Jawab : Muhammad Hasan / 13518012
 
 Modul Mahasiswa ini berfungsi sebagai modul untuk melayani permintaan Mahasiswa <!-- Silahkan hapus/tambah/edit deskripsi jika diperlukan -->
 
-<!-- Capture Tampilan Layar (jika ada) -->
+<!-- Isi Capture Tampilan Layar (jika ada) -->
 
 ## Daftar Realisasi Tabel Basis Data
 
-<!-- Lengkapi dengan nama tabel dan atribut-nya -->
+<!-- Isi Lengkapi dengan nama tabel dan atribut-nya -->
 
 
 ### Tabel User
