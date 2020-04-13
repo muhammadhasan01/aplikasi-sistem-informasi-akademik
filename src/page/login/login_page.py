@@ -42,7 +42,7 @@ def initLoginPage(window):
     uic.loadUi(uifile, _contentForgotPassword_L_1)
     uifile.close()
     setupForgotPasswordContent(_contentForgotPassword_L_1)
-    # Get forget password button and set connection
+    # Get login page button and set connection
     _loginPageButton_L_3 = _contentForgotPassword_L_1.findChild(QPushButton, "loginPageButton_L_3")
     assert _loginPageButton_L_3 is not None
     _loginPageButton_L_3.clicked.connect(lambda: loginPageButtonClicked())
