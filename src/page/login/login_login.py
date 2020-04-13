@@ -1,25 +1,28 @@
+from PyQt5.QtCore import QFile
+from PyQt5.QtWidgets import QLineEdit, QPushButton
+from PyQt5 import uic
+
 from page.dosen.dosen_page import initDosenPage
 from page.mahasiswa.mahasiswa_page import initMahasiswaPage
 from util.mysql_controller import execQuery
 
 
-def setupLoginContent(content):
+def setupLoginContent(window, content):
+    global _usernameInput_L_2, _passwordInput_L_2
     # Get object from ui
     _usernameInput_L_2 = content.findChild(QLineEdit, "usernameInput_L_2")
     _passwordInput_L_2 = content.findChild(QLineEdit, "passwordInput_L_2")
     _loginButton_L_2 = content.findChild(QPushButton, "loginButton_L_2")
-    _forgotPasswordButton_L_2 = content.findChild(QPushButton, "forgotPasswordButton_L_2")
     # Asserting object findChild successful
     assert _usernameInput_L_2 is not None
     assert _passwordInput_L_2 is not None
     assert _loginButton_L_2 is not None
-    assert _forgotPasswordButton_L_2 is not None
 
     # Set connection
-    _loginButton_L_2.clicked.connect(lambda: loginButtonClicked(content))
+    _loginButton_L_2.clicked.connect(lambda: loginButtonClicked(window))
 
 
-def loginButtonClicked(content):
+def loginButtonClicked(window):
     global _usernameInput_L_2, _passwordInput_L_2
     username = _usernameInput_L_2.displayText()
     password = _passwordInput_L_2.displayText()
@@ -38,13 +41,13 @@ def loginButtonClicked(content):
     # Cek if user found
     if user:
         if (user[0].role == "dosen"):
-            initDosenPage(content, user[0])
-        elif (user[0].role == "mahasiswa")
-            initMahasiswaPage(content, user[0])
+            initDosenPage(window, user[0])
+        elif (user[0].role == "mahasiswa"):
+            initMahasiswaPage(window, user[0])
         else:
             uifile = QFile(":ui/ui/next_page.ui")
             uifile.open(QFile.ReadOnly)
-            uic.loadUi(uifile, content)
+            uic.loadUi(uifile, window)
             uifile.close()
     else:  # Not found
         _passwordInput_L_2.setText("Invalid username or password")
