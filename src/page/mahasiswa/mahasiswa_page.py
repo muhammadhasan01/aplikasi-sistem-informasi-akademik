@@ -5,11 +5,13 @@ from PyQt5 import uic
 
 import resource
 from page.mahasiswa.mahasiswa_dashboard import setupDashboardContent
+from page.mahasiswa.mahasiswa_mata_kuliah import setupMataKuliahContent
 
 
 _auth = None
 _mahasiswaProfile = None
-_mahasiswaTeachList = None
+_mahasiswaStudyList = None
+_mahasiswaMataKuliah = None
 
 
 def initMahasiswaPage(window, auth):
@@ -41,7 +43,6 @@ def initMahasiswaPage(window, auth):
     assert _mataKuliahButton_M_2 is not None
     # Set logo
     _logoSiak_M_2.setPixmap(QPixmap(":img/img/logo_siak_full.png"))
-
     # Create and load content dashboard widget
     _content_M_1 = QWidget()
     uifile = QFile(":ui/ui/mahasiswa_content_dashboard.ui")
@@ -64,15 +65,15 @@ def initMahasiswaPage(window, auth):
 
 
 def berandaButtonClicked():
-    global _content_M_1, _mainVLayout_M_1, _auth, _mahasiswaProfile, _mahasiswaTeachList
+    global _content_M_1, _mainVLayout_M_1, _auth, _mahasiswaProfile, _mahasiswaStudyList
     # Create new widget
     newWidget = QWidget()
     uifile = QFile(":ui/ui/mahasiswa_content_dashboard.ui")
     uifile.open(QFile.ReadOnly)
     uic.loadUi(uifile, newWidget)
     uifile.close()
-    _mahasiswaProfile, _mahasiswaTeachList = \
-        setupDashboardContent(newWidget, _auth, _mahasiswaProfile, _mahasiswaTeachList)
+    _mahasiswaProfile, _mahasiswaStudyList = \
+        setupDashboardContent(newWidget, _auth, _mahasiswaProfile, _mahasiswaStudyList)
     # Set up the new widget
     _mainVLayout_M_1.removeWidget(_content_M_1)
     _content_M_1 = newWidget
@@ -94,13 +95,15 @@ def pengaturanButtonClicked():
 
 
 def mataKuliahButtonClicked():
-    global _content_M_1, _mainVLayout_M_1
+    global _content_M_1, _mainVLayout_M_1, _auth, _mahasiswaProfile, _mahasiswaMataKuliah
     # Create new widget
     newWidget = QWidget()
     uifile = QFile(":ui/ui/mahasiswa_content_matkul.ui")
     uifile.open(QFile.ReadOnly)
     uic.loadUi(uifile, newWidget)
     uifile.close()
+    _mahasiswaProfile, _mahasiswaMataKuliah = \
+        setupMataKuliahContent(newWidget, _auth, _mahasiswaProfile, _mahasiswaMataKuliah)
     # Set up the new widget
     _mainVLayout_M_1.removeWidget(_content_M_1)
     _content_M_1 = newWidget
