@@ -5,6 +5,7 @@ from PyQt5 import uic
 
 import resource
 from page.mahasiswa.mahasiswa_dashboard import setupDashboardContent
+from page.mahasiswa.mahasiswa_settings import setupSettingsContent, submitButtonClicked
 from page.mahasiswa.mahasiswa_mata_kuliah import setupMataKuliahContent
 
 
@@ -81,17 +82,26 @@ def berandaButtonClicked():
 
 
 def pengaturanButtonClicked():
-    global _content_M_1, _mainVLayout_M_1
+    global _content_M_1, _mainVLayout_M_1, _mahasiswaProfile
     # Create new widget
     newWidget = QWidget()
     uifile = QFile(":ui/ui/mahasiswa_content_settings.ui")
     uifile.open(QFile.ReadOnly)
     uic.loadUi(uifile, newWidget)
     uifile.close()
+    _mahasiswaProfile = setupSettingsContent(newWidget, _auth, _mahasiswaProfile)
     # Set up the new widget
     _mainVLayout_M_1.removeWidget(_content_M_1)
     _content_M_1 = newWidget
     _mainVLayout_M_1.addWidget(_content_M_1)
+    # Get submit button and set connection
+    _submitButton_M_4 = _content_M_1.findChild(QPushButton, "submitButton_M_4")
+    assert _submitButton_M_4 is not None
+    _submitButton_M_4.clicked.connect(lambda: updateMahasiswaProfile())
+
+def updateMahasiswaProfile():
+    global _mahasiswaProfile
+    _mahasiswaProfile = submitButtonClicked(_mahasiswaProfile)
 
 
 def mataKuliahButtonClicked():
