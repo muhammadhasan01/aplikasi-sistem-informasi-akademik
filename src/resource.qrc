@@ -5,10 +5,11 @@
     <file>img/profil_default.png</file>
   </qresource>
   <qresource prefix="ui">
-    <file>ui/forgot_password_page.ui</file>
-    <file>ui/login_page.ui</file>
     <file>ui/admin/headeradmin.ui</file>
     <file>ui/admin/mainpageadmin.ui</file>
+    <file>ui/login_layout.ui</file>
+    <file>ui/login_login.ui</file>
+    <file>ui/login_forgot_password.ui</file>
     <file>ui/dosen_layout.ui</file>
     <file>ui/dosen_navbar.ui</file>
     <file>ui/dosen_content_dashboard.ui</file>
