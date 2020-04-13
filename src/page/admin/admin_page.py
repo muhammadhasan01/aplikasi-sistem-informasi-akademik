@@ -8,7 +8,7 @@ from page.admin.admin_navbar import getNavBarAdmin
 
 
 def initAdminPage(window, auth):
-  global _navbar_A, _content_A, _mainVLayout_A
+  global _navbar_A, _content_A_dashboard, _content_A_1, _content_A_2, _mainVLayout_A
   # Load ui
   uifile = QFile(":ui/ui/admin/admin_layout.ui")
   uifile.open(QFile.ReadOnly)
@@ -24,15 +24,30 @@ def initAdminPage(window, auth):
   uifile.close()
   
   #load content
-  _content_A = QWidget()
+  _content_A_dashboard = QWidget()
   uifile = QFile(":ui/ui/admin/admin_content_dashboard.ui")
   uifile.open(QFile.ReadOnly)
-  uic.loadUi(uifile, _content_A)
+  uic.loadUi(uifile, _content_A_dashboard)
   uifile.close()
 
+  _content_A_1 = QWidget()
+  uifile = QFile(":ui/ui/admin/admin_content_user.ui")
+  uifile.open(QFile.ReadOnly)
+  uic.loadUi(uifile, _content_A_1)
+  uifile.close()
+  _content_A_1.setVisible(False)
+
+  _content_A_2 = QWidget()
+  uifile = QFile(":ui/ui/admin/admin_content_matkul.ui")
+  uifile.open(QFile.ReadOnly)
+  uic.loadUi(uifile, _content_A_2)
+  uifile.close()
+  _content_A_2.setVisible(False)
+
+
   #set admin name to auth and image to default
-  _adminName_A_1 = _content_A.findChild(QLabel, "adminName")
-  _adminImage_A_1 = _content_A.findChild(QLabel, "adminImage")
+  _adminName_A_1 = _content_A_dashboard.findChild(QLabel, "adminName")
+  _adminImage_A_1 = _content_A_dashboard.findChild(QLabel, "adminImage")
   _adminName_A_1.setText(auth)
   pixmap = QPixmap(":img/img/profil_default.png")
   pixmap = pixmap.scaledToHeight(300)
@@ -40,7 +55,9 @@ def initAdminPage(window, auth):
 
   #Load widgets to layout
   _mainVLayout_A.addWidget(_navbar_A)
-  _mainVLayout_A.addWidget(_content_A)
+  _mainVLayout_A.addWidget(_content_A_dashboard)
+  _mainVLayout_A.addWidget(_content_A_1)
+  _mainVLayout_A.addWidget(_content_A_2)
   _navbar_A.setFixedHeight(200)
 
   #set up buttons
@@ -52,41 +69,20 @@ def initAdminPage(window, auth):
   _matkulButton_A.clicked.connect(lambda: matkulButtonClicked())
 
 def berandaButtonClicked():
-  global _content_A, _mainVLayout_A
-  print(_content_A)
-  newWidget = QWidget()
-  uifile = QFile(":ui/ui/admin/admin_content_dashboard.ui")
-  uifile.open(QFile.ReadOnly)
-  uic.loadUi(uifile, newWidget)
-  uifile.close()
-  _mainVLayout_A.removeWidget(_content_A)
-  _content_A = newWidget
-  _mainVLayout_A.addWidget(_content_A)
+  global _content_A_dashboard, _content_A_1, _content_A_2, _mainVLayout_A
+  _content_A_1.setVisible(False)
+  _content_A_2.setVisible(False)
+  _content_A_dashboard.setVisible(True)
 
 def userButtonClicked():
-  global _content_A, mainVLayout_A
-  #create new widget
-  newWidget = QWidget()
-  uifile = QFile(":ui/ui/admin/admin_content_user.ui")
-  uifile.open(QFile.ReadOnly)
-  uic.loadUi(uifile, newWidget)
-  uifile.close()
-
-  #still error, remove old widget
-  _mainVLayout_A.removeWidget(_content_A)
-  _content_A = newWidget
-  _mainVLayout_A.addWidget(_content_A)
+  _content_A_1.setVisible(True)
+  _content_A_2.setVisible(False)
+  _content_A_dashboard.setVisible(False)
 
 def matkulButtonClicked():
-  global _content_A, mainVLayout_A
-  newWidget = QWidget()
-  uifile = QFile(":ui/ui/admin/admin_content_matkul.ui")
-  uifile.open(QFile.ReadOnly)
-  uic.loadUi(uifile, newWidget)
-  uifile.close()
-  _mainVLayout_A.removeWidget(_content_A)
-  _content_A = newWidget
-  _mainVLayout_A.addWidget(_content_A)
+  _content_A_1.setVisible(False)
+  _content_A_2.setVisible(True)
+  _content_A_dashboard.setVisible(False)
 
 # import resource
 # from page.login.forgot_password_page import initForgotPasswordPage

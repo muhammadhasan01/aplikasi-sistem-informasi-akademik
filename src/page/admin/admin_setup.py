@@ -2,11 +2,11 @@ from PyQt5.QtGui import QPixmap
 from PyQt5.QtWidgets import QWidget, QScrollArea, QHBoxLayout, QVBoxLayout, QLabel
 from PyQt5.QtCore import Qt
 
-# from util.mysql_controller import execQuery
+from util.mysql_controller import execQuery
 
-# def setupDashboardContent(content, auth, profile, teachList):
-#     global _mainVLayout_D_3, _profileHLayout_D_3, _profilePicture_D_3, \
-#            _profileDetail_D_3, _profileDetailValue_D_3
+def setupUserContent(content, auth, profile, teachList):
+    global _mainVLayout_D_3, _profileHLayout_D_3, _profilePicture_D_3, \
+           _profileDetail_D_3, _profileDetailValue_D_3
 #     # Assert that the query successful
 #     assert profile is not None
 #     assert teachList is not None
