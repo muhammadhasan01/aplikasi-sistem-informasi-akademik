@@ -48,7 +48,7 @@
     </font>
    </property>
    <property name="text">
-    <string>Buat Akun Mahasiswa</string>
+    <string>Matkul</string>
    </property>
   </widget>
   <widget class="QPushButton" name="userButton">
@@ -67,7 +67,7 @@
     </font>
    </property>
    <property name="text">
-    <string>Pengaturan</string>
+    <string>User</string>
    </property>
   </widget>
   <widget class="QPushButton" name="berandaButton">
@@ -89,7 +89,7 @@
     <string>Beranda</string>
    </property>
   </widget>
-  <widget class="QLabel" name="logoSiak_D_2">
+  <widget class="QLabel" name="logoSiak">
    <property name="geometry">
     <rect>
      <x>90</x>

@@ -1,15 +1,18 @@
 from PyQt5.QtGui import QPixmap
-from PyQt5.QtWidgets import QWidget, QScrollArea, QHBoxLayout, QVBoxLayout, QLabel
+from PyQt5.QtWidgets import QWidget, QScrollArea, QHBoxLayout, QVBoxLayout, QLabel, QGroupBox
 from PyQt5.QtCore import Qt
 
 from util.mysql_controller import execQuery
 
-def setupUserContent(content, auth, profile, teachList):
-    global _mainVLayout_D_3, _profileHLayout_D_3, _profilePicture_D_3, \
-           _profileDetail_D_3, _profileDetailValue_D_3
-#     # Assert that the query successful
-#     assert profile is not None
-#     assert teachList is not None
+def setupUserContent(content):
+    global _userDescriptionBox_A_1
+    _userDescriptionBox_A_1 = content.findChild(QGroupBox,"userDescriptionBox")
+    
+    # Assert that the query successful
+    assert _userDescriptionBox_A_1 is not None
+
+    getUsers()
+
 
 #     # Get object from dashboard ui
 #     _scrollArea_D_3 = content.findChild(QScrollArea, "scrollArea_D_3")
@@ -42,3 +45,9 @@ def setupUserContent(content, auth, profile, teachList):
 
 #     # Return profile and teach so it will be reusable
 #     return (profile, teachList)
+
+def getUsers():
+  query = """SELECT * FROM user"""
+  users = execQuery(query)
+  for user in users:
+    print(user.get("id"))

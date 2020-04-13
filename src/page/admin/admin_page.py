@@ -5,6 +5,7 @@ from PyQt5 import uic
 
 import resource
 from page.admin.admin_navbar import getNavBarAdmin
+from page.admin.admin_setup import setupUserContent
 
 
 def initAdminPage(window, auth):
@@ -68,6 +69,10 @@ def initAdminPage(window, auth):
   _userButton_A.clicked.connect(lambda: userButtonClicked())
   _matkulButton_A.clicked.connect(lambda: matkulButtonClicked())
 
+  #set up logo
+  _logoSiak_A = _navbar_A.findChild(QLabel, "logoSiak")
+  _logoSiak_A.setPixmap(QPixmap(":img/img/logo_siak_full.png"))
+
 def berandaButtonClicked():
   global _content_A_dashboard, _content_A_1, _content_A_2, _mainVLayout_A
   _content_A_1.setVisible(False)
@@ -78,6 +83,8 @@ def userButtonClicked():
   _content_A_1.setVisible(True)
   _content_A_2.setVisible(False)
   _content_A_dashboard.setVisible(False)
+
+  setupUserContent(_content_A_1)
 
 def matkulButtonClicked():
   _content_A_1.setVisible(False)
