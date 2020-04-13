@@ -4,7 +4,9 @@
 
 ![SistemInformasiAkademik](img/logo_siak.png) ![SIAK](img/SIAK.png)
 
-Perangkat lunak yang kami kembangkan adalah **Aplikasi Sistem Informasi Akademik (SIAK)**. Aplikasi Sistem Informasi Akademik (SIAK) ini dikembangkan untuk memenuhi kebutuhan dalam kegiatan
+Perangkat lunak yang kami kembangkan adalah **Aplikasi Sistem Informasi Akademik (SIAK)**.
+
+Aplikasi Sistem Informasi Akademik (SIAK) ini dikembangkan untuk memenuhi kebutuhan dalam kegiatan
 administrasi akademik di kampus STEI (Sekolah Teknik Elektro dan Informatika). Sistem
 Informasi Akademik ini dikelola oleh admin dan dapat digunakan oleh mahasiswa dan dosen.
 
