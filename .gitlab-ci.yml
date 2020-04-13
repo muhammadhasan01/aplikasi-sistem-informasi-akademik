@@ -18,22 +18,23 @@ pylint:
   stage: Static Analysis
   script:
   - cd src
-  - pylint util\mysql_controller.py
-  - pylint main.py
-  - pylint resource.py
-  - pylint etc\populate_db.py
-  - pylint page\admin\header.py
-  - pylint page\admin\index.py
-  - pylint page\dosen\dosen_dashboard.py
-  - pylint page\dosen\dosen_page.py
-  - pylint page\login\forgot_password_page.py
-  - pylint page\login\login_page.py
-  - pylint page\mahasiswa\mahasiswa_dashboard.py
-  - pylint page\mahasiswa\mahasiswa_page.py
-  - pylint ui\login_page.py
-  - pylint util\csv_reader.py
-  - pylint util\mysql_controller.py
+  - pylint -d C0301 util\mysql_controller.py
+  - pylint -d C0301 main.py
+  - pylint -d C0301 resource.py
+  - pylint -d C0301 etc\populate_db.py
+  - pylint -d C0301 page\admin\header.py
+  - pylint -d C0301 page\admin\index.py
+  - pylint -d C0301 page\dosen\dosen_dashboard.py
+  - pylint -d C0301 page\dosen\dosen_page.py
+  - pylint -d C0301 page\login\forgot_password_page.py
+  - pylint -d C0301 page\login\login_page.py
+  - pylint -d C0301 page\mahasiswa\mahasiswa_dashboard.py
+  - pylint -d C0301 page\mahasiswa\mahasiswa_page.py
+  - pylint -d C0301 ui\login_page.py
+  - pylint -d C0301 util\csv_reader.py
+  - pylint -d C0301 util\mysql_controller.py
   - cd ..
+
 
   
 #defines the job in Test Stage
