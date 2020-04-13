@@ -6,6 +6,7 @@ from PyQt5 import uic
 import resource
 from page.dosen.dosen_dashboard import setupDashboardContent
 from page.dosen.dosen_settings import setupSettingsContent, submitButtonClicked
+from page.dosen.dosen_create_std_account import setupCreateStdAccountContent
 
 
 _auth = None
@@ -105,13 +106,15 @@ def updateDosenProfile():
 
 
 def buatAkunMhsButtonClicked():
-    global _content_D_1, _mainVLayout_D_1
+    global _content_D_1, _mainVLayout_D_1, _dosenProfile
     # Create new widget
     newWidget = QWidget()
     uifile = QFile(":ui/ui/dosen_content_create_std_account.ui")
     uifile.open(QFile.ReadOnly)
     uic.loadUi(uifile, newWidget)
     uifile.close()
+    _dosenProfile = setupCreateStdAccountContent(newWidget, _auth,
+                                                 _dosenProfile)
     # Set up the new widget
     _mainVLayout_D_1.removeWidget(_content_D_1)
     _content_D_1 = newWidget
