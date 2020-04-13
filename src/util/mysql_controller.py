@@ -2,10 +2,10 @@ import mysql.connector
 
 
 _mydb = mysql.connector.connect(
-  host="remotemysql.com",
-  user="xFverzMDrj",
-  passwd="9LyFkYxdKw",
-  database="xFverzMDrj"
+    host="remotemysql.com",
+    user="xFverzMDrj",
+    passwd="9LyFkYxdKw",
+    database="xFverzMDrj"
 )
 
 
