@@ -24,6 +24,11 @@ def initAdminPage(window, auth):
   uic.loadUi(uifile, _navbar_A)
   uifile.close()
   
+  #set up logo
+  _logoSiak_A = _navbar_A.findChild(QLabel, "logoSiak")
+  _logoSiak_A.setPixmap(QPixmap(":img/img/logo_siak_full.png"))
+  
+  
   #load content
   _content_A_dashboard = QWidget()
   uifile = QFile(":ui/ui/admin/admin_content_dashboard.ui")
@@ -69,9 +74,6 @@ def initAdminPage(window, auth):
   _userButton_A.clicked.connect(lambda: userButtonClicked())
   _matkulButton_A.clicked.connect(lambda: matkulButtonClicked())
 
-  #set up logo
-  _logoSiak_A = _navbar_A.findChild(QLabel, "logoSiak")
-  _logoSiak_A.setPixmap(QPixmap(":img/img/logo_siak_full.png"))
 
 def berandaButtonClicked():
   global _content_A_dashboard, _content_A_1, _content_A_2, _mainVLayout_A

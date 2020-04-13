@@ -2,6 +2,7 @@
   <qresource prefix="img">
     <file>img/login_page_bg.jpg</file>
     <file>img/profil_default.png</file>
+    <file>img/logo_siak_full.png</file>
   </qresource>
   <qresource prefix="ui">
     <file>ui/forgot_password_page.ui</file>
@@ -12,5 +13,6 @@
     <file>ui/admin/admin_content_user.ui</file>
     <file>ui/admin/admin_content_matkul.ui</file>
     <file>ui/admin/admin_layout.ui</file>
+    <file>ui/admin/admin_user_box.ui</file>
   </qresource>
 </RCC>

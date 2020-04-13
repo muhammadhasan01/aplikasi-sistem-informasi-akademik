@@ -1,53 +1,40 @@
 from PyQt5.QtGui import QPixmap
-from PyQt5.QtWidgets import QWidget, QScrollArea, QHBoxLayout, QVBoxLayout, QLabel, QGroupBox
-from PyQt5.QtCore import Qt
+from PyQt5.QtWidgets import QWidget, QScrollArea, QHBoxLayout, QVBoxLayout, QLabel, QGroupBox, QPushButton
+from PyQt5.QtCore import QFile, Qt
+from PyQt5 import uic
 
 from util.mysql_controller import execQuery
 
 def setupUserContent(content):
-    global _userDescriptionBox_A_1
-    _userDescriptionBox_A_1 = content.findChild(QGroupBox,"userDescriptionBox")
-    
+    global _userVLayout_A_1
+    _userVLayout_A_1 = content.findChild(QVBoxLayout, "userVLayout")
     # Assert that the query successful
-    assert _userDescriptionBox_A_1 is not None
+    assert _userVLayout_A_1 is not None
 
-    getUsers()
+    _userVLayout_A_1.setAlignment(Qt.AlignTop)
+    _userA = QVBoxLayout()
+    
 
+    button = QPushButton()
+    test = QHBoxLayout()
+    test.addWidget(button)
+    setUpUserLayout(_userVLayout_A_1)
 
-#     # Get object from dashboard ui
-#     _scrollArea_D_3 = content.findChild(QScrollArea, "scrollArea_D_3")
-#     _mainVLayout_D_3 = content.findChild(QVBoxLayout, "mainVLayout_D_3")
-#     _profileHLayout_D_3 = content.findChild(QHBoxLayout, "profileHLayout_D_3")
-#     _profilePicture_D_3 = content.findChild(QLabel, "profilePicture_D_3")
-#     _profileDetail_D_3 = content.findChild(QLabel, "profileDetail_D_3")
-#     _profileDetailValue_D_3 = content.findChild(QLabel, "profileDetailValue_D_3")
-#     # Asserting object findChild successful
-#     assert _scrollArea_D_3 is not None
-#     assert _mainVLayout_D_3 is not None
-#     assert _profileHLayout_D_3 is not None
-#     assert _profilePicture_D_3 is not None
-#     assert _profileDetail_D_3 is not None
-#     assert _profileDetailValue_D_3 is not None
-#     # Set mainVLayout alignment
-#     _mainVLayout_D_3.setAlignment(Qt.AlignTop)
-#     mainScrollArea = QWidget()
-#     mainScrollArea.setLayout(_mainVLayout_D_3)
-#     mainScrollArea.setMaximumWidth(content.frameGeometry().width() - 300)
-#     _scrollArea_D_3.setAlignment(Qt.AlignHCenter)
-#     _scrollArea_D_3.setWidget(mainScrollArea)
-#     _scrollArea_D_3.setWidgetResizable(True)
+    #format row : id; username; password; role; image
+    user = getUsers()
 
-#     # Setup profile section
-#     setupProfileSection(content, profile)
-
-#     # Setup teach section
-#     setupTeachSection(content, teachList)
-
-#     # Return profile and teach so it will be reusable
-#     return (profile, teachList)
+def setUpUserLayout(layout:QVBoxLayout):
+  listOfUserBox = list()
+  hBox = QHBoxLayout()
+  userBox = QGroupBox()
+  userBox.setLayout(hBox)
+  uifile = QFile(":ui/ui/admin/admin_user_box.ui")
+  uifile.open(QFile.ReadOnly)
+  uic.loadUi(uifile, userBox)
+  uifile.close()
+  layout.addWidget(userBox)
 
 def getUsers():
   query = """SELECT * FROM user"""
   users = execQuery(query)
-  for user in users:
-    print(user.get("id"))
+  return users
