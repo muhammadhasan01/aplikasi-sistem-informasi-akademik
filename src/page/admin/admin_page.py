@@ -120,21 +120,6 @@ def matkulButtonClicked():
     # Set background
     # Set connection
 
-#def berandaButtonClicked():
-#   homeButton_A_30
-#       change address to home page
-#       does nothing if already in home page
-
-#def userButtonClicked():
-#   userButton_A_30
-#       get data from user_table
-#       display as user_list
-
-#def matkulButtonClicked():
-#   matkulButton_A_30
-#       get data from matkul_table
-#       display as matkul_list
-
 #def sortUserBy(string):
 #   sort_user_byButton_A_30
 #       sort user_table as per preset string conditions
@@ -178,9 +163,3 @@ def matkulButtonClicked():
 #       remove matkul tuple from matkul_table
 #       display as matkul_list
 #   #repeated across all tuples
-
-#def display_user_list(window):
-#
-
-#def display_matkul_list(window):
-#
