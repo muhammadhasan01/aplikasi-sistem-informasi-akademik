@@ -18,7 +18,7 @@ pylint:
   stage: Static Analysis
   script:
   - cd src
-  - testRunner.bat
+  - ./testRunner.bat
   - cd ..
   
 #defines the job in Test Stage
