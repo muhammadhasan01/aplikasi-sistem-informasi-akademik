@@ -2,6 +2,7 @@
   <qresource prefix="img">
     <file>img/login_page_bg.jpg</file>
     <file>img/logo_siak_full.png</file>
+    <file>img/profil_default.png</file>
   </qresource>
   <qresource prefix="ui">
     <file>ui/new_login_layout.ui</file>
