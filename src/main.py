@@ -4,7 +4,6 @@ from PyQt5 import QtWidgets
 # import etc.populate_db as populate_db
 from page.login.login_page import initLoginPage
 
-
 def init():
     global window, button, textEdit
     # Create app

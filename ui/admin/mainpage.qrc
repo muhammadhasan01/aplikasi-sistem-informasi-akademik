@@ -1,5 +1,0 @@
-<RCC>
-  <qresource prefix="image_user_admin">
-    <file>../../img/profil_default.png</file>
-  </qresource>
-</RCC>
