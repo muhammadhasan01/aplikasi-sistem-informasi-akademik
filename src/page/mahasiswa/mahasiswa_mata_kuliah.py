@@ -69,8 +69,6 @@ def setupQuery(auth, profile, matkulList):
 
 def setupMatkulSection(content, matkulList):
     global _mainVLayout_M_5
-    print("Nah ini dia")
-    print(matkulList)
     # Add table header
     # Setup label
     title = QLabel()

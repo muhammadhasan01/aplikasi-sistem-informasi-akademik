@@ -39,7 +39,7 @@ def setupDashboardContent(content, auth, profile, studyList):
     _scrollArea_M_3.setWidgetResizable(True)
 
     # Setup profile section
-    setupProfileSection(content, profile)
+    setupProfileSection(content, profile, studyList)
 
     # Setup study section
     setupstudySection(content, studyList)
@@ -80,7 +80,7 @@ def setupQuery(auth, profile, studyList):
     return (profile, studyList)
 
 
-def setupProfileSection(content, profile):
+def setupProfileSection(content, profile, studyList):
     global _profileHLayout_M_3, _profilePicture_M_3, \
            _profileDetail_M_3, _profileDetailValue_M_3
     # Set max profile height
@@ -99,11 +99,12 @@ def setupProfileSection(content, profile):
     _profileDetail_M_3.setFixedHeight(300)
     _profileDetail_M_3.setMinimumWidth(200)
     # Set profile detail value
+    ipkMahasiswa = getIPK(studyList)
     tempatTanggalLahir = profile.tempat_lahir + ", " + profile.tanggal_lahir.strftime("%m/%d/%Y");
     profileDetailValue = f": {profile.nama_mahasiswa}\n" \
                          f": {profile.angkatan}\n" \
                          f": {tempatTanggalLahir}\n" \
-                         f": {4.00}\n" \
+                         f": {ipkMahasiswa}\n" \
                          f": {profile.nim}"
     _profileDetailValue_M_3.setText(profileDetailValue)
     _profileDetailValue_M_3.setFixedHeight(300)
@@ -187,3 +188,16 @@ def setupstudySection(content, studyList):
         # Set in mainVLayout
         _mainVLayout_M_3.addWidget(row)
         
+def getIPK(studyList):
+    lenValue = len(studyList)
+    if lenValue == 0:
+        return "N/A"
+    gradeValue = {"A" : 4.0, "AB" : 3.5, "B" : 3, "BC" : 2.5, "C" : 2, "D" : 1, "E" : 0}
+    IPK = 0
+    for study in studyList:
+        try:
+            IPK += gradeValue[study.indeks]
+        except Exception as e:
+            print(e)
+    IPK /= lenValue
+    return str(IPK)
