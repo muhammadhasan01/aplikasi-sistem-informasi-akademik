@@ -5,8 +5,6 @@
     <file>img/profil_default.png</file>
   </qresource>
   <qresource prefix="ui">
-    <file>ui/admin/headeradmin.ui</file>
-    <file>ui/admin/mainpageadmin.ui</file>
     <file>ui/login_layout.ui</file>
     <file>ui/login_login.ui</file>
     <file>ui/login_forgot_password.ui</file>
@@ -21,5 +19,16 @@
     <file>ui/mahasiswa_content_settings.ui</file>
     <file>ui/mahasiswa_content_matkul.ui</file>
     <file>ui/next_page.ui</file>
+    <file>img/profil_default.png</file>
+    <file>img/logo_siak_full.png</file>
+    <file>ui/admin/admin_navbar.ui</file>
+    <file>ui/admin/admin_content_dashboard.ui</file>
+    <file>ui/admin/admin_content_user.ui</file>
+    <file>ui/admin/admin_content_matkul.ui</file>
+    <file>ui/admin/admin_layout.ui</file>
+    <file>ui/admin/admin_user_box.ui</file>
+    <file>ui/admin/admin_content_user_add_user.ui</file>
+    <file>ui/admin/admin_matkul_box.ui</file>
+    <file>ui/admin/admin_content_add_matkul.ui</file>
   </qresource>
 </RCC>
