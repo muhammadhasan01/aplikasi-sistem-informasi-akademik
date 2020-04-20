@@ -24,6 +24,10 @@ def setupSettingsContent(content, auth, profile):
     assert _passBaruInput_M_4 is not None
     assert _resetButton_M_4 is not None
 
+    # Masking password
+    _passLamaInput_M_4.setEchoMode(QLineEdit.Password)
+    _passBaruInput_M_4.setEchoMode(QLineEdit.Password)
+
     # Set connection
     _resetButton_M_4.clicked.connect(lambda: resetButtonClicked())
 

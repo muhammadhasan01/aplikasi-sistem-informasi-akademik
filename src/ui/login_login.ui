@@ -113,6 +113,12 @@
    </property>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>usernameInput_L_2</tabstop>
+  <tabstop>passwordInput_L_2</tabstop>
+  <tabstop>loginButton_L_2</tabstop>
+  <tabstop>forgotPasswordButton_L_2</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
