@@ -24,8 +24,8 @@ MSDeploy:
   stage: Deploy
   script:
   - cd src/
-  - convertResource
-  - deployApp
+  - convertResource.bat
+  - deployApp.bat
   - python main.py
   tags:
   - DeployTubesRPL
