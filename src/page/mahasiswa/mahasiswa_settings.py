@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QPushButton, QLineEdit
+from PyQt5.QtWidgets import QPushButton, QLineEdit, QMessageBox
 
 from util.mysql_controller import execQuery, getDatabase
 
@@ -62,9 +62,13 @@ def submitButtonClicked(profile):
     oldPass = _passLamaInput_M_4.displayText()
     newUser = _userBaruInput_M_4.displayText()
     newPass = _passBaruInput_M_4.displayText()
+    message = QMessageBox()
+    message.setIcon(QMessageBox.Information)
     # Check old user and old pass input
     if oldUser != profile.username or oldPass != profile.password:
-        _userLamaInput_M_4.setText("Data username atau password lama salah")
+        message.setWindowTitle("Invalid input")
+        message.setText("Old username or password is invalid")
+        message.exec_()
         return profile
     # Old data valid
     try:
@@ -81,5 +85,12 @@ def submitButtonClicked(profile):
         profile = profile._replace(username=newUser, password=newPass)
     except Exception as e:
         print(e)
+        message.setWindowTitle("Invalid input")
+        message.setText("New username or password is invalid")
+        message.exec_()
+    # Print message
+    message.setWindowTitle("Process successful")
+    message.setText("User successfully updated")
+    message.exec_()
     # Return profile so it can be reused
     return profile

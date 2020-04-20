@@ -1,5 +1,5 @@
 from PyQt5.QtWidgets import (QWidget, QScrollArea, QHBoxLayout, QVBoxLayout,
-                             QLabel, QCheckBox)
+                             QLabel, QCheckBox, QMessageBox)
 from PyQt5.QtCore import Qt
 
 from util.mysql_controller import execQuery, getDatabase
@@ -150,6 +150,9 @@ def setupMatkulSection(content, profile, matkulList):
 
 
 def daftarCheckboxChanged(daftarCheckbox, profile, matkul):
+    message = QMessageBox()
+    message.setIcon(QMessageBox.Information)
+    message.setWindowTitle("Register Info")
     # Insert query to mata_kuliah_diambil table
     try:
         query = """INSERT INTO mata_kuliah_diambil (nim, kehadiran, indeks, kode_matkul, semester, tahun)
@@ -160,5 +163,9 @@ def daftarCheckboxChanged(daftarCheckbox, profile, matkul):
         cursor.execute(query, format)
         db.commit()
         daftarCheckbox.setEnabled(False)
+        message.setText("Register successful")
+        message.exec_()
     except Exception as e:
         print(e)
+        message.setText("Register failed")
+        message.exec_()
