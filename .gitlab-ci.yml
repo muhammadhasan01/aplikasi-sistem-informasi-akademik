@@ -24,9 +24,9 @@ MSDeploy:
   stage: Deploy
   script:
   - cd src/
-  - pip install pyinstaller
-  - pip install -r requirements.txt
-  - pyinstaller -F main.py
+  - convertResource
+  - deployApp
+  - python main.py
   tags:
   - DeployTubesRPL
   artifacts:
