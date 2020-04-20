@@ -16,7 +16,8 @@ stages:
 pytest:
   stage: Test
   script:
-  - cd test/;pytest -v
+  - cd src/test
+  - py.test
   
 #defines the job in Deploy Stage (use runner tag name)
 MSDeploy:
