@@ -28,11 +28,11 @@ Penanggung Jawab : Naufal Dean Anugrah / 13518123
 
 Modul Login ini berfungsi sebagai modul untuk melakukan verifikasi login user <!-- Silahkan hapus/tambah/edit deskripsi jika diperlukan -->
 
-#### *Capture* Tampilan Login
+#### Capture Tampilan Login
 
 ![TampilanLogin](docs/TampilanLogin.png)
 
-#### *Capture* Tampilan Forgot Password
+#### Capture Tampilan Forgot Password
 
 ![TampilanForgotPassword](docs/TampilanForgotPassword.png)
 
@@ -58,24 +58,19 @@ Penanggung Jawab : Muhammad Hasan / 13518012
 
 Modul Mahasiswa ini berfungsi sebagai modul untuk melayani permintaan Mahasiswa <!-- Silahkan hapus/tambah/edit deskripsi jika diperlukan -->
 
-<!-- Isi Capture Tampilan Layar (jika ada) -->
-
-#### *Capture* Tampilan Beranda Mahasiswa
+#### Capture Tampilan Beranda Mahasiswa
 
 ![BerandaMahasiswa](docs/BerandaMahasiswa.png)
 
-#### *Capture* Tampilan Daftar Mata Kuliah untuk Mahasiswa
+#### Capture Tampilan Daftar Mata Kuliah untuk Mahasiswa
 
 ![DaftarMatkulMahasiswa](docs/DaftarMataKuliahMahasiswa.png)
 
-#### *Capture* Tampilan Pengaturan *User* Mahasiswa
+#### Capture Tampilan Pengaturan User Mahasiswa
 
 ![PengaturanMahasiswa](docs/PengaturanMahasiswa.png)
 
 ## Daftar Realisasi Tabel Basis Data
-
-<!-- Isi Lengkapi dengan nama tabel dan atribut-nya -->
-
 
 ### Tabel User
 
