@@ -1,8 +1,8 @@
-from PyQt5.QtGui import QPixmap
-from PyQt5.QtWidgets import QWidget, QScrollArea, QHBoxLayout, QVBoxLayout, QLabel, QPushButton
+from PyQt5.QtWidgets import (QWidget, QScrollArea, QHBoxLayout, QVBoxLayout,
+                             QLabel, QCheckBox)
 from PyQt5.QtCore import Qt
 
-from util.mysql_controller import execQuery
+from util.mysql_controller import execQuery, getDatabase
 
 
 def setupMataKuliahContent(content, auth, profile, matkulList):
@@ -30,7 +30,7 @@ def setupMataKuliahContent(content, auth, profile, matkulList):
     _scrollArea_M_5.setWidgetResizable(True)
 
     # Setup matkul section
-    setupMatkulSection(content, matkulList)
+    setupMatkulSection(content, profile, matkulList)
 
     # Return profile and matkul so it will be reusable
     return (profile, matkulList)
@@ -67,10 +67,8 @@ def setupQuery(auth, profile, matkulList):
     return (profile, matkulList)
 
 
-def setupMatkulSection(content, matkulList):
+def setupMatkulSection(content, profile, matkulList):
     global _mainVLayout_M_5
-    print("Nah ini dia")
-    print(matkulList)
     # Add table header
     # Setup label
     title = QLabel()
@@ -112,7 +110,10 @@ def setupMatkulSection(content, matkulList):
     # Add table row
     # Label style
     styleRow = "font: 13pt Franklin Gothic Demi Cond; border: 1px solid blue"
-    for matkul in matkulList:
+    map = {}
+    matkulDiambilList = execQuery("SELECT * FROM mata_kuliah_diambil")
+    assert matkulDiambilList is not None
+    for i, matkul in enumerate(matkulList):
         # Setup label
         row = QLabel()
         hBox = QHBoxLayout()
@@ -130,13 +131,34 @@ def setupMatkulSection(content, matkulList):
         matkulRow.setAlignment(Qt.AlignCenter)
         matkulRow.setStyleSheet(styleRow)
         # Row Daftar Mata Kuliah
-        daftarRow = QPushButton("Daftar")
-        daftarRow.setCheckable(True)
-        daftarRow.setStyleSheet(styleRow)
+        daftarCheckBox = QCheckBox()
+        for matkulDiambil in matkulDiambilList:
+            if matkulDiambil.nim == profile.nim and matkulDiambil.kode_matkul == matkul.kode_matkul:
+                daftarCheckBox.setChecked(True)
+                daftarCheckBox.setEnabled(False)
+        map[i] = (daftarCheckBox, matkul)
         # Set in hBox
         hBox.addWidget(namaRow)
         hBox.addWidget(matkulRow)
-        hBox.addWidget(daftarRow)
+        hBox.addWidget(map[i][0])
         # Set in mainVLayout
         _mainVLayout_M_5.addWidget(row)
-        
+
+    # Setup connection
+    for key in map.keys():
+        map[key][0].toggled.connect(lambda _, k=key: daftarCheckboxChanged(map[k][0], profile, map[k][1]))
+
+
+def daftarCheckboxChanged(daftarCheckbox, profile, matkul):
+    # Insert query to mata_kuliah_diambil table
+    try:
+        query = """INSERT INTO mata_kuliah_diambil (nim, kehadiran, indeks, kode_matkul, semester, tahun)
+                   VALUES (%s, %s, NULL, %s, %s, %s)"""
+        format = (profile.nim, "0", matkul.kode_matkul, matkul.semester, matkul.tahun,)
+        db = getDatabase()
+        cursor = db.cursor()
+        cursor.execute(query, format)
+        db.commit()
+        daftarCheckbox.setEnabled(False)
+    except Exception as e:
+        print(e)

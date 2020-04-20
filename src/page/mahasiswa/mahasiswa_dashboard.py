@@ -186,4 +186,3 @@ def setupstudySection(content, studyList):
         hBox.addWidget(nilaiRow)
         # Set in mainVLayout
         _mainVLayout_M_3.addWidget(row)
-        
