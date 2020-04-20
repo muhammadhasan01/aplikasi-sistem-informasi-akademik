@@ -63,10 +63,10 @@ def resetButtonClicked():
 def submitButtonClicked(profile):
     global _userLamaInput_D_4, _passLamaInput_D_4, _userBaruInput_D_4, \
            _passBaruInput_D_4
-    oldUser = _userLamaInput_D_4.displayText()
-    oldPass = _passLamaInput_D_4.displayText()
-    newUser = _userBaruInput_D_4.displayText()
-    newPass = _passBaruInput_D_4.displayText()
+    oldUser = _userLamaInput_D_4.text()
+    oldPass = _passLamaInput_D_4.text()
+    newUser = _userBaruInput_D_4.text()
+    newPass = _passBaruInput_D_4.text()
     message = QMessageBox()
     message.setIcon(QMessageBox.Information)
     # Check old user and old pass input
