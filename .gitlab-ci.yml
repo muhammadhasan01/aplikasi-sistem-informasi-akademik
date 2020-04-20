@@ -24,8 +24,8 @@ MSDeploy:
   stage: Deploy
   script:
   - cd src/
-  - convertResource.bat
-  - deployApp.bat
+  - pyrcc5 -o resource.py resource.qrc
+  - pyinstaller -F -w main.py
   - python main.py
   tags:
   - DeployTubesRPL
