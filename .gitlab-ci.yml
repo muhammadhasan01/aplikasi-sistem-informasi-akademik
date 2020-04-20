@@ -9,19 +9,8 @@ before_script:
   
 # different stages in the pipeline
 stages:
-  - Static Analysis
   - Test
   - Deploy
-  
-#defines the job in Static Analysis Stage
-pylint:
-  stage: Static Analysis
-  script:
-  - cd src
-  - pylint -d C0301 accepted.py
-  - cd ..
-
-
   
 #defines the job in Test Stage
 pytest:
