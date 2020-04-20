@@ -13,7 +13,7 @@ def supply_invalid_username_password():
 	num_of_invalid_data = 10
 	result = []
 	fake = Faker()
-	for i in range(num_of_invalid_data):
+	for _ in range(num_of_invalid_data):
 		result.append((fake.name(), fake.password()))
 	return result
 
@@ -21,7 +21,7 @@ def test_login(supply_valid_username_password, supply_invalid_username_password)
 	# Check login succesful and also to map valid data
 	valid_data = {}
 	for data in supply_valid_username_password:
-		# Query database
+	    # Query database
 	    query = "SELECT * FROM user WHERE username=%s AND password=%s"
 	    format = (data.username, data.password,)
 	    user = None
