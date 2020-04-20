@@ -9,34 +9,23 @@ before_script:
   
 # different stages in the pipeline
 stages:
-  - Static Analysis
   - Test
   - Deploy
-  
-#defines the job in Static Analysis Stage
-pylint:
-  stage: Static Analysis
-  script:
-  - cd src
-  - pylint -d C0301 accepted.py
-  - cd ..
-
-
   
 #defines the job in Test Stage
 pytest:
   stage: Test
   script:
-  - cd test/;pytest -v
+  - cd src/test
+  - py.test
   
 #defines the job in Deploy Stage (use runner tag name)
 MSDeploy:
   stage: Deploy
   script:
   - cd src/
-  - pip install pyinstaller
-  - pip install -r requirements.txt
-  - pyinstaller -F main.py
+  - pyrcc5 -o resource.py resource.qrc
+  - pyinstaller -F -w main.py
   tags:
   - DeployTubesRPL
   artifacts:

@@ -4,11 +4,7 @@ block_cipher = None
 
 
 a = Analysis(['main.py'],
-<<<<<<< HEAD
-             pathex=['C:\\Users\\USER\\Downloads\\Tubes-RPL\\src'],
-=======
              pathex=['C:\\Users\\USER\\Desktop\\Kuliah\\Semester 4\\RPL\\Tubes-RPL\\src'],
->>>>>>> ModulLogin
              binaries=[],
              datas=[],
              hiddenimports=[],
