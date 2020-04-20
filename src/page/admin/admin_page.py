@@ -5,7 +5,8 @@ from PyQt5 import uic
 
 import resource
 from page.admin.admin_navbar import getNavBarAdmin
-from page.admin.admin_setup import setupUserContent
+from page.admin.admin_setup_user import setupUserContent
+from page.admin.admin_setup_matkul import setupMatkulContent
 
 
 def initAdminPage(window, auth):
@@ -92,6 +93,8 @@ def matkulButtonClicked():
   _content_A_1.setVisible(False)
   _content_A_2.setVisible(True)
   _content_A_dashboard.setVisible(False)
+
+  setupMatkulContent(_content_A_2)
 
 # import resource
 # from page.login.forgot_password_page import initForgotPasswordPage
