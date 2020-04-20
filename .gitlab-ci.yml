@@ -26,7 +26,6 @@ MSDeploy:
   - cd src/
   - pyrcc5 -o resource.py resource.qrc
   - pyinstaller -F -w main.py
-  - python main.py
   tags:
   - DeployTubesRPL
   artifacts:
