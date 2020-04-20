@@ -50,7 +50,7 @@ def setupMatkulContent(content):
       # _removeUser_A_1.clicked.connect(lambda: removeUser(matkul.id))
     
 #     #set button onclick
-#     _addMatkul_A_2.clicked.connect(lambda: showAddUserPopUp())
+    _addMatkul_A_2.clicked.connect(lambda: showAddMatkulPopup())
 
 def setMatkulBoxData(userBox:QGroupBox, matkul):
   matkulName : QLabel         = userBox.findChild(QLabel, "matkulName")
@@ -81,47 +81,49 @@ def setMatkulBoxData(userBox:QGroupBox, matkul):
   matkulId.setAlignment(Qt.AlignCenter)
   matkulJadwal.setAlignment(Qt.AlignCenter)
 
-  removeButton.clicked.connect(lambda : removeMatkul(matkul.kode_matkul))
+  removeButton.clicked.connect(lambda : removeMatkulAndRender(matkul.kode_matkul))
   # updateButton.clicked.connect(lambda : showUpdatePopup())
 
 
-# def showAddUserPopUp():
-#   global _addUserPopup_A_1
-#   _addUserPopup_A_1 = QWidget()
-#   uifile = QFile(":ui/ui/admin/admin_content_user_add_user.ui")
-#   uifile.open(QFile.ReadOnly)
-#   uic.loadUi(uifile, _addUserPopup_A_1)
-#   uifile.close()
+def showAddMatkulPopup():
+  global _addMatkulPopup_A_2
+  _addMatkulPopup_A_2 = QWidget()
+  uifile = QFile(":ui/ui/admin/admin_content_add_matkul.ui")
+  uifile.open(QFile.ReadOnly)
+  uic.loadUi(uifile, _addMatkulPopup_A_2)
+  uifile.close()
 
-#   _addUserPopup_A_1.setFixedHeight(645)
-#   _addUserPopup_A_1.setFixedWidth(1000)
+  _addMatkulPopup_A_2.setFixedHeight(645)
+  _addMatkulPopup_A_2.setFixedWidth(1000)
 
-#   _submit_form_A_1 = _addUserPopup_A_1.findChild(QPushButton, "submitButton")
-#   _submit_form_A_1.clicked.connect(lambda:insertUserToDatabaseAndRenderPage())
-#   _addUserPopup_A_1.show()
+  _submit_form_A_2 = _addMatkulPopup_A_2.findChild(QPushButton, "submitButton")
+  _submit_form_A_2.clicked.connect(lambda:insertMatkulToDatabaseAndRenderPage())
+  _addMatkulPopup_A_2.show()
 
-def removeMatkul(matkulId):
+def removeMatkulAndRender(matkulId):
+  global _content_A_2
   query = "DELETE FROM mata_kuliah WHERE kode_matkul = %s"
   format = (matkulId,)
   execQuery(query,format=format,queryType="DELETE")
+  setupMatkulContent(_content_A_2)
 
 
-# def insertUserToDatabaseAndRenderPage():
-#   global _addUserPopup_A_1, _content_A_1
-#   _userUsername = _addUserPopup_A_1.findChild(QTextEdit, "userUsername")
-#   _userPassword = _addUserPopup_A_1.findChild(QTextEdit, "userPassword")
-#   _userRole = _addUserPopup_A_1.findChild(QTextEdit, "userRole")
-#   _userImage = _addUserPopup_A_1.findChild(QTextEdit, "userImage")
+def insertMatkulToDatabaseAndRenderPage():
+  global _addMatkulPopup_A_2, _content_A_2
+  _matkulCode = _addMatkulPopup_A_2.findChild(QTextEdit, "matkulCode")
+  _matkulName = _addMatkulPopup_A_2.findChild(QTextEdit, "matkulName")
+  _matkulDescription = _addMatkulPopup_A_2.findChild(QTextEdit, "matkulDescription")
+  _jurusanCode = _addMatkulPopup_A_2.findChild(QTextEdit, "jurusanCode")
 
-#   userUserName = _userUsername.toPlainText()
-#   userPassword = _userPassword.toPlainText()
-#   userRole = _userRole.toPlainText()
-#   userImage = _userImage.toPlainText()
+  matkulCode = _matkulCode.toPlainText()
+  matkulName = _matkulName.toPlainText()
+  matkulDescription = _matkulDescription.toPlainText()
+  jurusanCode = _jurusanCode.toPlainText()
 
-#   query = 'INSERT INTO user(username,password,role,image) values(%s,%s,%s,%s)'
-#   format = (userUserName, userPassword, userRole, userImage) 
-#   execQuery(query,format=format,queryType="INSERT")
-#   setupUserContent(_content_A_1)
+  query = 'INSERT INTO mata_kuliah(kode_matkul,nama_matkul,deskripsi_matkul,kode_jurusan) values(%s,%s,%s,%s)'
+  format = (matkulCode, matkulName, matkulDescription, jurusanCode) 
+  execQuery(query,format=format,queryType="INSERT")
+  setupMatkulContent(_content_A_2)
 
 def getJadwalOfMatkul(matkulId: str):
   global _jadwal_A_2

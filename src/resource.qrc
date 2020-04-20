@@ -16,5 +16,6 @@
     <file>ui/admin/admin_user_box.ui</file>
     <file>ui/admin/admin_content_user_add_user.ui</file>
     <file>ui/admin/admin_matkul_box.ui</file>
+    <file>ui/admin/admin_content_add_matkul.ui</file>
   </qresource>
 </RCC>
