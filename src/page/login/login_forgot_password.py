@@ -1,6 +1,4 @@
-from PyQt5.QtCore import QFile
-from PyQt5.QtWidgets import QLineEdit, QPushButton
-from PyQt5 import uic
+from PyQt5.QtWidgets import QLineEdit, QPushButton, QMessageBox
 
 from util.mysql_controller import execQuery
 
@@ -16,14 +14,24 @@ def setupForgotPasswordContent(content):
     assert _emailInput_L_3 is not None
     assert _sendEmailButton_L_3 is not None
     # Set connection
+    _usernameInput_L_3.returnPressed.connect(lambda: sendEmailButtonClicked(content))
+    _emailInput_L_3.returnPressed.connect(lambda: sendEmailButtonClicked(content))
     _sendEmailButton_L_3.clicked.connect(lambda: sendEmailButtonClicked(content))
 
 
 def sendEmailButtonClicked(content):
     global _usernameInput_L_3, _emailInput_L_3
-    username = _usernameInput_L_3.displayText()
-    email = _emailInput_L_3.displayText()
-    # TODO: add notification pane
+    message = QMessageBox()
+    message.setIcon(QMessageBox.Information)
+    message.setWindowTitle("Invalid input")
+    # Get text
+    username = _usernameInput_L_3.text()
+    email = _emailInput_L_3.text()
+    # Check username and password
+    if len(username) == 0 or len(email) == 0:
+        message.setText("Username or email cannot be empty")
+        message.exec_()
+        return
     # Query database
     query = "SELECT * FROM user WHERE username=%s"
     format = (username,)
@@ -40,6 +48,8 @@ Content       :
   username = {user[0].username}
   password = {user[0].password}\
 """)
-        _emailInput_L_3.setText("Email sent")
+        message.setText("Email sent")
+        message.exec_()
     else:  # Not found
-        _emailInput_L_3.setText("Username not found")
+        message.setText("Username not found")
+        message.exec_()

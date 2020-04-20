@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QPushButton, QLineEdit
+from PyQt5.QtWidgets import QPushButton, QLineEdit, QMessageBox
 
 from util.mysql_controller import execQuery, getDatabase
 
@@ -97,6 +97,8 @@ def submitButtonClicked(profile):
     kodeJurusan = _kodeJurusanInput_D_5.displayText()
     userDefault = _userDefaultInput_D_5.displayText()
     passDefault = _passDefaultInput_D_5.displayText()
+    message = QMessageBox()
+    message.setIcon(QMessageBox.Information)
     # Check if username or nim duplicate
     try:
         userList = execQuery("""SELECT username
@@ -104,19 +106,24 @@ def submitButtonClicked(profile):
                                 WHERE username=%s""",
                              (userDefault,))
         if userList:
-            _nimInput_D_5.setText("Username sudah ada")
-            print("Username sudah ada")
+            message.setWindowTitle("Username error")
+            message.setText("Username has already been taken")
+            message.exec_()
             return
         mhsList = execQuery("""SELECT nim
                                FROM profil_mahasiswa
                                WHERE nim=%s""",
                             (nim,))
         if mhsList:
-            _nimInput_D_5.setText("NIM sudah ada")
-            print("NIM sudah ada")
+            message.setWindowTitle("NIM error")
+            message.setText("NIM has already been taken")
+            message.exec_()
             return
     except Exception as e:
         print(e)
+        message.setWindowTitle("Query error")
+        message.setText("There seems to be an error in the query process")
+        message.exec_()
         return
     # Insert query to user table
     try:
@@ -143,11 +150,13 @@ def submitButtonClicked(profile):
                    VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"""
         format = (nim, angkatan, nama, tempatLahir, tanggalLahir, alamatRumah,
                   alamatTinggal, email, id, kodeJurusan, profile.NIP)
-        print(format)
         db = getDatabase()
         cursor = db.cursor()
         cursor.execute(query, format)
         db.commit()
+        message.setWindowTitle("Process successful")
+        message.setText("User mahasiswa has been added successfully")
+        message.exec_()
     except Exception as e:
         # Rollback user table
         query = """DELETE FROM user WHERE username=%s"""

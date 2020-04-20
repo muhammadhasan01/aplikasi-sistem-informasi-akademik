@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QPushButton, QLineEdit
+from PyQt5.QtWidgets import QPushButton, QLineEdit, QMessageBox
 
 from util.mysql_controller import execQuery, getDatabase
 
@@ -23,6 +23,10 @@ def setupSettingsContent(content, auth, profile):
     assert _userBaruInput_M_4 is not None
     assert _passBaruInput_M_4 is not None
     assert _resetButton_M_4 is not None
+
+    # Masking password
+    _passLamaInput_M_4.setEchoMode(QLineEdit.Password)
+    _passBaruInput_M_4.setEchoMode(QLineEdit.Password)
 
     # Set connection
     _resetButton_M_4.clicked.connect(lambda: resetButtonClicked())
@@ -58,13 +62,17 @@ def resetButtonClicked():
 def submitButtonClicked(profile):
     global _userLamaInput_M_4, _passLamaInput_M_4, _userBaruInput_M_4, \
            _passBaruInput_M_4
-    oldUser = _userLamaInput_M_4.displayText()
-    oldPass = _passLamaInput_M_4.displayText()
-    newUser = _userBaruInput_M_4.displayText()
-    newPass = _passBaruInput_M_4.displayText()
+    oldUser = _userLamaInput_M_4.text()
+    oldPass = _passLamaInput_M_4.text()
+    newUser = _userBaruInput_M_4.text()
+    newPass = _passBaruInput_M_4.text()
+    message = QMessageBox()
+    message.setIcon(QMessageBox.Information)
     # Check old user and old pass input
     if oldUser != profile.username or oldPass != profile.password:
-        _userLamaInput_M_4.setText("Data username atau password lama salah")
+        message.setWindowTitle("Invalid input")
+        message.setText("Old username or password is invalid")
+        message.exec_()
         return profile
     # Old data valid
     try:
@@ -81,5 +89,12 @@ def submitButtonClicked(profile):
         profile = profile._replace(username=newUser, password=newPass)
     except Exception as e:
         print(e)
+        message.setWindowTitle("Invalid input")
+        message.setText("New username or password is invalid")
+        message.exec_()
+    # Print message
+    message.setWindowTitle("Process successful")
+    message.setText("User successfully updated")
+    message.exec_()
     # Return profile so it can be reused
     return profile

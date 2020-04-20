@@ -1,5 +1,5 @@
 from PyQt5.QtCore import QFile
-from PyQt5.QtWidgets import QLineEdit, QPushButton
+from PyQt5.QtWidgets import QLineEdit, QPushButton, QMessageBox
 from PyQt5 import uic
 
 from page.dosen.dosen_page import initDosenPage
@@ -18,18 +18,27 @@ def setupLoginContent(window, content):
     assert _usernameInput_L_2 is not None
     assert _passwordInput_L_2 is not None
     assert _loginButton_L_2 is not None
+    # Mask password
+    _passwordInput_L_2.setEchoMode(QLineEdit.Password)
 
     # Set connection
+    _usernameInput_L_2.returnPressed.connect(lambda: loginButtonClicked(window))
+    _passwordInput_L_2.returnPressed.connect(lambda: loginButtonClicked(window))
     _loginButton_L_2.clicked.connect(lambda: loginButtonClicked(window))
 
 
 def loginButtonClicked(window):
     global _usernameInput_L_2, _passwordInput_L_2
-    username = _usernameInput_L_2.displayText()
-    password = _passwordInput_L_2.displayText()
+    message = QMessageBox()
+    message.setIcon(QMessageBox.Information)
+    message.setWindowTitle("Invalid login")
+    # Get text
+    username = _usernameInput_L_2.text()
+    password = _passwordInput_L_2.text()
     # Check username and password
     if len(username) == 0 or len(password) == 0:
-        _passwordInput_L_2.setText("Username or password cannot be empty")
+        message.setText("Username or password cannot be empty")
+        message.exec_()
         return
     # Query database
     query = "SELECT * FROM user WHERE username=%s AND password=%s"
@@ -48,4 +57,5 @@ def loginButtonClicked(window):
         else:
             initAdminPage(window,user[0])
     else:  # Not found
-        _passwordInput_L_2.setText("Invalid username or password")
+        message.setText("Invalid username or password")
+        message.exec_()
