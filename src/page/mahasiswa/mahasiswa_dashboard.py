@@ -4,7 +4,6 @@ from PyQt5.QtCore import Qt
 
 from util.mysql_controller import execQuery
 
-
 def setupDashboardContent(content, auth, profile, studyList):
     global _mainVLayout_M_3, _profileHLayout_M_3, _profilePicture_M_3, \
            _profileDetail_M_3, _profileDetailValue_M_3
