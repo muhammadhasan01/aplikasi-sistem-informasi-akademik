@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form_D_5</class>
+ <widget class="QWidget" name="Form_D_5">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1920</width>
+    <height>880</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <widget class="QLabel" name="backgroundLabel_D_5">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1920</width>
+     <height>880</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: white</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QWidget" name="verticalLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>400</x>
+     <y>70</y>
+     <width>231</width>
+     <height>611</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="labelVLayout_D_5">
+    <item>
+     <widget class="QLabel" name="nimLabel_D_5">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="font">
+       <font>
+        <family>Franklin Gothic Demi Cond</family>
+        <pointsize>13</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>NIM</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="angkatanLabel_D_5">
+      <property name="font">
+       <font>
+        <family>Franklin Gothic Demi Cond</family>
+        <pointsize>13</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Angkatan</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="namaLabel_D_5">
+      <property name="font">
+       <font>
+        <family>Franklin Gothic Demi Cond</family>
+        <pointsize>13</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Nama</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="tempatLahirLabel_D_5">
+      <property name="font">
+       <font>
+        <family>Franklin Gothic Demi Cond</family>
+        <pointsize>13</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Tempat Lahir</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="tanggalLahirLabel_D_5">
+      <property name="font">
+       <font>
+        <family>Franklin Gothic Demi Cond</family>
+        <pointsize>13</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Tanggal Lahir</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="alamatRumahLabel_D_5">
+      <property name="font">
+       <font>
+        <family>Franklin Gothic Demi Cond</family>
+        <pointsize>13</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Alamat Rumah</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="alamatTinggalLabel_D_5">
+      <property name="font">
+       <font>
+        <family>Franklin Gothic Demi Cond</family>
+        <pointsize>13</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Alamat Tinggal</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="emailLabel_D_5">
+      <property name="font">
+       <font>
+        <family>Franklin Gothic Demi Cond</family>
+        <pointsize>13</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Email</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="kodeJurusanLabel_D_5">
+      <property name="font">
+       <font>
+        <family>Franklin Gothic Demi Cond</family>
+        <pointsize>13</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Kode Jurusan</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="userDefaultLabel_D_5">
+      <property name="font">
+       <font>
+        <family>Franklin Gothic Demi Cond</family>
+        <pointsize>13</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Username Default</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="passDefaultLabel_D_5">
+      <property name="font">
+       <font>
+        <family>Franklin Gothic Demi Cond</family>
+        <pointsize>13</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Password Default</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QPushButton" name="resetButton_D_5">
+   <property name="geometry">
+    <rect>
+     <x>1140</x>
+     <y>710</y>
+     <width>181</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Franklin Gothic Demi Cond</family>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Reset</string>
+   </property>
+  </widget>
+  <widget class="QWidget" name="verticalLayoutWidget_2">
+   <property name="geometry">
+    <rect>
+     <x>690</x>
+     <y>70</y>
+     <width>831</width>
+     <height>611</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="inputVLayout_D_5">
+    <property name="spacing">
+     <number>20</number>
+    </property>
+    <item>
+     <widget class="QLineEdit" name="nimInput_D_5">
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLineEdit" name="angkatanInput_D_5">
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLineEdit" name="namaInput_D_5">
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLineEdit" name="tempatLahirInput_D_5">
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLineEdit" name="tanggalLahirInput_D_5">
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLineEdit" name="alamatRumahInput_D_5">
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLineEdit" name="alamatTinggalInput_D_5">
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLineEdit" name="emailInput_D_5">
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLineEdit" name="kodeJurusanInput_D_5">
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLineEdit" name="userDefaultInput_D_5">
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLineEdit" name="passDefaultInput_D_5">
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QLabel" name="borderLabel_D_5">
+   <property name="geometry">
+    <rect>
+     <x>370</x>
+     <y>40</y>
+     <width>1181</width>
+     <height>741</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border: 1px solid black</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="submitButton_D_5">
+   <property name="geometry">
+    <rect>
+     <x>1340</x>
+     <y>710</y>
+     <width>181</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Franklin Gothic Demi Cond</family>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Submit</string>
+   </property>
+  </widget>
+  <zorder>backgroundLabel_D_5</zorder>
+  <zorder>borderLabel_D_5</zorder>
+  <zorder>verticalLayoutWidget</zorder>
+  <zorder>resetButton_D_5</zorder>
+  <zorder>verticalLayoutWidget_2</zorder>
+  <zorder>submitButton_D_5</zorder>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

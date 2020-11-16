@@ -55,7 +55,7 @@ def initAdminPage(window, auth):
   #set admin name to auth and image to default
   _adminName_A_1 = _content_A_dashboard.findChild(QLabel, "adminName")
   _adminImage_A_1 = _content_A_dashboard.findChild(QLabel, "adminImage")
-  _adminName_A_1.setText(auth)
+  _adminName_A_1.setText(auth.username)
   pixmap = QPixmap(":img/img/profil_default.png")
   pixmap = pixmap.scaledToHeight(300)
   _adminImage_A_1.setPixmap(pixmap)

@@ -3,3 +3,5 @@ startVenv.bat
 designer.exe.lnk
 src/util/__pycache__/mysql_controller.cpython-38.pyc
 *.pyc
+src/resource.py
+src/__pycache__/resource.cpython-38.pyc

@@ -1,64 +1,69 @@
 from PyQt5.QtCore import QFile
 from PyQt5.QtGui import QPixmap
-from PyQt5.QtWidgets import QPushButton, QLineEdit, QLabel
+from PyQt5.QtWidgets import QWidget, QVBoxLayout, QLabel, QPushButton
 from PyQt5 import uic
 
 import resource
-from page.login.forgot_password_page import initForgotPasswordPage
-from util.mysql_controller import execQuery
+from page.login.login_login import setupLoginContent
+from page.login.login_forgot_password import setupForgotPasswordContent
 
 
 def initLoginPage(window):
-    global _usernameInput_L_1, _passwordInput_L_1, _loginButton_L_1, _forgotPasswordButton_L_1
-    # Load ui
-    uifile = QFile(":ui/ui/login_page.ui")
+    global _contentLogin_L_1, _contentForgotPassword_L_1, _mainVLayout_L_1
+    # Load layout ui
+    uifile = QFile(":ui/ui/login_layout.ui")
     uifile.open(QFile.ReadOnly)
     uic.loadUi(uifile, window)
     uifile.close()
-    # Get object from ui
+    # Get objeck from layout ui
     _loginBgLabel_L_1 = window.findChild(QLabel, "loginBgLabel_L_1")
-    _usernameInput_L_1 = window.findChild(QLineEdit, "usernameInput_L_1")
-    _passwordInput_L_1 = window.findChild(QLineEdit, "passwordInput_L_1")
-    _loginButton_L_1 = window.findChild(QPushButton, "loginButton_L_1")
-    _forgotPasswordButton_L_1 = window.findChild(QPushButton, "forgotPasswordButton_L_1")
+    _mainVLayout_L_1 = window.findChild(QVBoxLayout, "mainVLayout_L_1")
     # Asserting object findChild successful
     assert _loginBgLabel_L_1 is not None
-    assert _usernameInput_L_1 is not None
-    assert _passwordInput_L_1 is not None
-    assert _loginButton_L_1 is not None
-    assert _forgotPasswordButton_L_1 is not None
     # Set background
     _loginBgLabel_L_1.setPixmap(QPixmap(":img/img/login_page_bg.jpg"))
-    # Set connection
-    _loginButton_L_1.clicked.connect(lambda: loginButtonClicked(window))
-    _forgotPasswordButton_L_1.clicked.connect(lambda: forgotPasswordButtonClicked(window))
+
+    # Create and load content login widget
+    _contentLogin_L_1 = QWidget()
+    uifile = QFile(":ui/ui/login_login.ui")
+    uifile.open(QFile.ReadOnly)
+    uic.loadUi(uifile, _contentLogin_L_1)
+    uifile.close()
+    setupLoginContent(window, _contentLogin_L_1)
+    # Get forget password button and set connection
+    _forgotPasswordButton_L_2 = _contentLogin_L_1.findChild(QPushButton, "forgotPasswordButton_L_2")
+    assert _forgotPasswordButton_L_2 is not None
+    _forgotPasswordButton_L_2.clicked.connect(lambda: forgotPasswordButtonClicked())
+
+    # Create and load content dashboard widget
+    _contentForgotPassword_L_1 = QWidget()
+    uifile = QFile(":ui/ui/login_forgot_password.ui")
+    uifile.open(QFile.ReadOnly)
+    uic.loadUi(uifile, _contentForgotPassword_L_1)
+    uifile.close()
+    setupForgotPasswordContent(_contentForgotPassword_L_1)
+    # Get login page button and set connection
+    _loginPageButton_L_3 = _contentForgotPassword_L_1.findChild(QPushButton, "loginPageButton_L_3")
+    assert _loginPageButton_L_3 is not None
+    _loginPageButton_L_3.clicked.connect(lambda: loginPageButtonClicked())
+
+    # Set widgets to layout
+    _mainVLayout_L_1.addWidget(_contentLogin_L_1)
+    _mainVLayout_L_1.addWidget(_contentForgotPassword_L_1)
+
+    # Simulate login page button click
+    loginPageButtonClicked()
 
 
-def loginButtonClicked(window):
-    global _usernameInput_L_1, _passwordInput_L_1
-    username = _usernameInput_L_1.displayText()
-    password = _passwordInput_L_1.displayText()
-    # Check username and password
-    if len(username) == 0 or len(password) == 0:
-        _passwordInput_L_1.setText("Username or password cannot be empty")
-        return
-    # Query database
-    query = "SELECT * FROM user WHERE username=%s AND password=%s"
-    format = (username, password,)
-    user = None
-    try:
-        user = execQuery(query, format)
-    except Exception as e:
-        print(e)
-    # Cek if user found
-    if user:
-        uifile = QFile(":ui/ui/next_page.ui")
-        uifile.open(QFile.ReadOnly)
-        uic.loadUi(uifile, window)
-        uifile.close()
-    else: # Not found
-        _passwordInput_L_1.setText("Invalid username or password")
+def loginPageButtonClicked():
+    global _contentLogin_L_1, _contentForgotPassword_L_1
+    # Set visible content
+    _contentLogin_L_1.setVisible(True)
+    _contentForgotPassword_L_1.setVisible(False)
 
 
-def forgotPasswordButtonClicked(window):
-    initForgotPasswordPage(window)
+def forgotPasswordButtonClicked():
+    global _contentLogin_L_1, _contentForgotPassword_L_1
+    # Set visible content
+    _contentLogin_L_1.setVisible(False)
+    _contentForgotPassword_L_1.setVisible(True)
