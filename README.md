@@ -18,13 +18,6 @@ Aplikasi Sistem Informasi Akademik (SIAK) tersebut dibuat oleh **Kelompok 02 - _
 | Naufal Dean Anugrah | 13518123 |
 | Yan Arie Motinggo | 13518129 |
 
-## Cara menjalankan
-
-### Window
-jalankan run.bat
-
-### Linux
-
 ## Daftar Realisasi Modul
 
 ### Modul Login
