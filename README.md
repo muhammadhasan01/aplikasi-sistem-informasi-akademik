@@ -1,4 +1,4 @@
-# Tugas Besar Rekayasa Perangkat Lunak (IF2250)
+# Aplikasi Sistem Informasi Akademik
 
 ## Deskripsi Perangkat Lunak
 
@@ -8,7 +8,7 @@ Aplikasi Sistem Informasi Akademik (SIAK) ini dikembangkan untuk memenuhi kebutu
 administrasi akademik di kampus STEI (Sekolah Teknik Elektro dan Informatika). Sistem
 Informasi Akademik ini dikelola oleh admin dan dapat digunakan oleh mahasiswa dan dosen.
 
-Aplikasi Sistem Informasi Akademik (SIAK) tersebut dibuat oleh **Kelompok 02 - _Skuy Living Empire_ - K03**:
+Aplikasi Sistem Informasi Akademik (SIAK) tersebut dibuat oleh:
 
 | **Nama** | **NIM** |
 | ------ | ------ |
